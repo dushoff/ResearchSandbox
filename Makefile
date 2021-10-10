@@ -13,14 +13,37 @@ vim_session:
 
 Sources += README.md
 
+resources/%: resources
+resources:
+	$(resDrop)
+
+######################################################################
+
+autopipeRcall = defined
+
+## Read and tidy; save two tidy data frames and a "graphing" frame
+rsaRe.Rout: rsaRe.R resources/rsaRe.rds
+	$(pipeRcall)
+
+## Some pix
+rsaReLook.Rout: rsaReLook.R rsaRe.rda
+
+## Make the analysis frame
+rsaRePrep.Rout: rsaRePrep.R rsaRe.rda
+
+## Try to fit
+rsaReFit.Rout: rsaReFit.R rsaRePrep.rds
+rsaReBin.Rout: rsaReBin.R rsaRePrep.rds
+rsaReFitLook.Rout: rsaReFitLook.R rsaReFit.rda
+
+## Checks from Bolker
+rsaReTMB.Rout: rsaReTMB.R rsaRePrep.rds
+
 ######################################################################
 
 ### Makestuff
 
 Sources += Makefile
-
-## Sources += content.mk
-## include content.mk
 
 Ignore += makestuff
 msrepo = https://github.com/dushoff
@@ -34,7 +57,7 @@ makestuff/Makefile:
 
 -include makestuff/os.mk
 
-## -include makestuff/pipeR.mk
+-include makestuff/pipeR.mk
 
 -include makestuff/git.mk
 -include makestuff/visual.mk
