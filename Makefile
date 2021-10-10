@@ -13,6 +13,7 @@ vim_session:
 
 Sources += README.md
 
+Ignore += resources
 resources/%: resources
 resources:
 	$(resDrop)
