@@ -19,6 +19,8 @@ resources:
 
 ######################################################################
 
+Sources += $(wildcard *.R)
+
 autopipeRcall = defined
 
 ## Read and tidy; save two tidy data frames and a "graphing" frame
