@@ -1,0 +1,10 @@
+
+Final output for this project is .docx. We are also potentially interested in producing nice html or pdf for development.
+
+For .docx we have a tex route and a direct route
+
+There are also questions about pandoc filters vs. options. Or something
+
+## Control figure-caption placement
+
+## Control citation style

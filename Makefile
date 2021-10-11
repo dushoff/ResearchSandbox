@@ -24,6 +24,9 @@ Sources += $(wildcard *.R)
 
 autopipeRcall = defined
 
+######################################################################
+
+## RSA reinfection INACTIVE (see reinfection)
 ## Read and tidy; save two tidy data frames and a "graphing" frame
 rsaRe.Rout: rsaRe.R resources/rsaRe.rds
 	$(pipeRcall)
@@ -44,6 +47,27 @@ rsaReTMB.Rout: rsaReTMB.R rsaRePrep.rds
 
 ######################################################################
 
+## Pandoc craziness arising from youtube
+
+Sources += youtube.txt all.bib
+
+yt.html: yt.md
+	$(pandoc)
+
+pfilter = --filter pandoc-xnos
+
+## yt.pdf: yt.md
+yt.tex: yt.md all.bib
+	pandoc --bibliography=all.bib $(pfilter) --citeproc -s -o $@ $<
+
+ms.brute.tex: ms.md all.bib
+	pandoc --bibliography=auto.bib $(pfilter) --citeproc -s -o $@ $< \
+	|| pandoc --filter pandoc-citeproc $(pfilter) -s -o $@ $<
+
+yt.Rout: yt.R
+
+######################################################################
+
 ### Makestuff
 
 Sources += Makefile
@@ -51,8 +75,6 @@ Sources += Makefile
 Ignore += makestuff
 msrepo = https://github.com/dushoff
 
-## Want to chain and make makestuff if it doesn't exist
-## Compress this ¶ to choose default makestuff route
 Makefile: makestuff/Makefile
 makestuff/Makefile:
 	git clone $(msrepo)/makestuff
@@ -61,6 +83,8 @@ makestuff/Makefile:
 -include makestuff/os.mk
 
 -include makestuff/pipeR.mk
+-include makestuff/pandoc.mk
+-include makestuff/texi.mk
 
 -include makestuff/git.mk
 -include makestuff/visual.mk
