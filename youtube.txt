@@ -20,3 +20,13 @@ References are weird and not trying to follow supplied style; crossrefs are good
 ## md ⇒ docx
 
 References look good; crossrefs don't work
+
+## Amazing solution
+
+* Made all the refs work by updating pandoc directly from repo and using the right finicky recipe (xnos first among other things)
+* Put the caption up by manipulating an expanded md file
+	* The best way I found to expand the md file was to:
+		* make the docx
+		* make it back into md
+		* manipulate the media directory inside the docx xml
+
