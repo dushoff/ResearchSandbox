@@ -8,3 +8,15 @@ There are also questions about pandoc filters vs. options. Or something
 ## Control figure-caption placement
 
 ## Control citation style
+
+## ⇒ tex ⇒ pdf
+
+Seems to work good; didn't mess with reference style yet
+
+## ⇒ tex ⇒ docx
+
+References are weird and not trying to follow supplied style; crossrefs are good
+
+## md ⇒ docx
+
+References look good; crossrefs don't work
