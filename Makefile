@@ -22,7 +22,7 @@ resources:
 
 Sources += $(wildcard *.R)
 
-autopipeRcall = defined
+autopipeR = defined
 
 ######################################################################
 
@@ -44,6 +44,11 @@ rsaReFitLook.Rout: rsaReFitLook.R rsaReFit.rda
 
 ## Checks from Bolker
 rsaReTMB.Rout: rsaReTMB.R rsaRePrep.rds
+
+######################################################################
+
+eastCoast.Rout: eastCoast.R
+	$(pipeR)
 
 ######################################################################
 
