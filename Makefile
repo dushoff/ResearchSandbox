@@ -11,6 +11,7 @@ vim_session:
 
 ######################################################################
 
+Ignore += README.html
 Sources += README.md
 
 Ignore += resources
@@ -63,6 +64,8 @@ eastCoast.Rout: eastCoast.R
 nsbs.Rout: nsbs.R
 
 ######################################################################
+
+Ignore += yt.docx.* yt.docx.md yt.html* yt.html.docx yt.html.md yt.md.* yt.upc.* yt.upc.md yt.xref.md
 
 ## Pandoc craziness arising from Chyun's youtube project
 
