@@ -64,7 +64,7 @@ nsbs.Rout: nsbs.R
 
 ######################################################################
 
-## Pandoc craziness arising from youtube
+## Pandoc craziness arising from Chyun's youtube project
 
 Sources += youtube.txt all.bib
 
