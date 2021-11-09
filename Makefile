@@ -11,12 +11,19 @@ vim_session:
 
 ######################################################################
 
+Ignore += README.html
 Sources += README.md
 
 Ignore += resources
 resources/%: resources
 resources:
 	$(resDrop)
+
+######################################################################
+
+## Bicko pages glitch
+
+README.html.pages:
 
 ######################################################################
 
@@ -60,7 +67,9 @@ nsbs.Rout: nsbs.R
 
 ######################################################################
 
-## Pandoc craziness arising from youtube
+Ignore += yt.docx.* yt.docx.md yt.html* yt.html.docx yt.html.md yt.md.* yt.upc.* yt.upc.md yt.xref.md
+
+## Pandoc craziness arising from Chyun's youtube project
 
 Sources += youtube.txt all.bib
 
