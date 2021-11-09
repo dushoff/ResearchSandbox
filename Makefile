@@ -52,6 +52,8 @@ eastCoast.Rout: eastCoast.R
 
 ######################################################################
 
+faaJeffries.Rout: faaJeffries.R
+
 ## spline bs
 
 nsbs.Rout: nsbs.R
