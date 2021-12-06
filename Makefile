@@ -58,6 +58,12 @@ nsbs.Rout: nsbs.R
 
 ######################################################################
 
+## How does stan work -- it's NUTS!
+
+stanss.Rout: stans.R ss.stan
+
+######################################################################
+
 ## Pandoc craziness arising from youtube
 
 Sources += youtube.txt all.bib
