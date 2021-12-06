@@ -11,6 +11,7 @@ vim_session:
 
 ######################################################################
 
+Ignore += README.html
 Sources += README.md
 
 Ignore += resources
@@ -20,7 +21,13 @@ resources:
 
 ######################################################################
 
-Sources += $(wildcard *.R)
+## Bicko pages glitch
+
+README.html.pages:
+
+######################################################################
+
+Sources += $(wildcard *.R *.stan)
 
 autopipeR = defined
 
@@ -52,6 +59,8 @@ eastCoast.Rout: eastCoast.R
 
 ######################################################################
 
+faaJeffries.Rout: faaJeffries.R
+
 ## spline bs
 
 nsbs.Rout: nsbs.R
@@ -64,7 +73,8 @@ stanss.Rout: stans.R ss.stan
 
 ######################################################################
 
-## Pandoc craziness arising from youtube
+## Pandoc craziness arising from Chyun's youtube project
+Ignore += yt.docx.* yt.docx.md yt.html* yt.html.docx yt.html.md yt.md.* yt.upc.* yt.upc.md yt.xref.md
 
 Sources += youtube.txt all.bib
 
