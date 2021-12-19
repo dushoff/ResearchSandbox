@@ -140,6 +140,35 @@ yt.Rout: yt.R
 
 ######################################################################
 
+## Chaining
+
+impmakeR += xval
+## 0.xval.Rout: xval.R
+%.xval.Rout: xval.R
+	$(pipeR)
+
+impmakeR += square
+%.square.Rout: square.R %.rds
+	$(pipeR)
+
+impmakeR += halve
+%.halve.Rout: halve.R %.rds
+	$(pipeR)
+
+impmakeR += print
+%.print.Rout: print.R %.rds
+	$(pipeR)
+
+11.xval.halve.square.halve.print.Rout:
+11.xval.square.halve.print.Rout:
+
+7.xval.halve.square.print.Rout:
+
+
+
+
+######################################################################
+
 ### Makestuff
 
 Sources += Makefile
