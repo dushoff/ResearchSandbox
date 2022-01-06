@@ -169,7 +169,20 @@ impmakeR += print
 
 7.xval.halve.square.print.Rout:
 
+######################################################################
 
+## Super-chaining
+
+impPref += prov
+
+## touch prov_ON.R prov_BC.R ##
+
+$(foreach pref,$(impPref),$(eval $(call impPref_r,$(pref))))
+
+define impPref_r
+scripts := `ls $(1)_.*.R`
+scripts := $(basename scripts)
+endef
 
 
 ######################################################################
