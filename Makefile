@@ -173,6 +173,7 @@ impmakeR += print
 
 ## Super-chaining
 ## Failing in a very frustrating way (eval doesn't know special variable values)
+## This is not where I did the failed evals -- and I also can't find them!
 
 impPref += prov
 
@@ -181,10 +182,26 @@ impPref += prov
 $(foreach pref,$(impPref),$(eval $(call impPref_r,$(pref))))
 
 define impPref_r
-scripts := `ls $(1)_.*.R`
-scripts := $(basename scripts)
+impmakeR += $(basename `ls prov_*.R`)
 endef
 
+impmakeR += `ls prov_*.R`
+
+######################################################################
+
+## Unpredictably does things in the wrong order
+Special chaining:
+
+pipeRimplicit += ON
+%.ON.Rout: %.rds ON.R
+	$(pipeR)
+
+## date_2022-01-01.Rout: date.R
+%_date.Rout: date.R
+	$(pipeR)
+
+pipeRimplicit += 2022-01-05_date
+## 2022-01-05_date.ON.Rout:
 
 ######################################################################
 
