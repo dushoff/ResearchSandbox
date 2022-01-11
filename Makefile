@@ -230,6 +230,22 @@ pipeRimplicit += $(prov:%=prov_%)
 
 ######################################################################
 
+## Super-chaining
+
+pipeRimplicit += names
+## fred.names.Rout: names.R
+%.names.Rout: names.R
+	$(pipeR)
+
+places = here there elsewhere
+recipeChain += places
+
+places_r = %.$(1).places.Rout: $(1).R %.names.rds; $$(pipeR)
+
+## here.fred.Rout: here.R
+
+######################################################################
+
 ### Makestuff
 
 Sources += Makefile
@@ -245,6 +261,7 @@ makestuff/Makefile:
 -include makestuff/os.mk
 
 -include makestuff/pipeR.mk
+-include makestuff/chains.mk
 -include makestuff/pandoc.mk
 -include makestuff/texi.mk
 
