@@ -172,6 +172,7 @@ impmakeR += print
 ######################################################################
 
 ## Super-chaining
+## Failing in a very frustrating way (eval doesn't know special variable values)
 
 impPref += prov
 
