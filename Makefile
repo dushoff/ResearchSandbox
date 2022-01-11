@@ -175,7 +175,7 @@ impmakeR += print
 ## Failing in a very frustrating way (eval doesn't know special variable values)
 ## This is not where I did the failed evals -- and I also can't find them!
 
-impPref += prov
+## impPref += prov
 
 ## touch prov_ON.R prov_BC.R ##
 
@@ -202,6 +202,20 @@ pipeRimplicit += ON
 
 pipeRimplicit += 2022-01-05_date
 ## 2022-01-05_date.ON.Rout:
+
+######################################################################
+
+date += 27x 27y 27z
+prov += quc blz rpt
+ddate = $(date:%=date_%.Rout)
+
+## date_27x.Rout: date.R ; $(pipeR)
+
+$(foreach d, $(date), $(eval date_$(d).Rout: date.R ; $$(pipeR)))
+
+## $(eval(date27x.Rout: date.R ; ls))
+
+## date_27x.Rout: date.R
 
 ######################################################################
 
