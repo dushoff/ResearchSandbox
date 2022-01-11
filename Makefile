@@ -205,17 +205,28 @@ pipeRimplicit += 2022-01-05_date
 
 ######################################################################
 
-date += 27x 27y 27z
-prov += quc blz rpt
-ddate = $(date:%=date_%.Rout)
+## Special chaining that works!
 
 ## date_27x.Rout: date.R ; $(pipeR)
 
-$(foreach d, $(date), $(eval date_$(d).Rout: date.R ; $$(pipeR)))
-
-## $(eval(date27x.Rout: date.R ; ls))
+date += 27x 27y 27z
+define date_r
+date_$(1).Rout: date.R ; $$(pipeR)
+fakeR += $(1)
+endef
+$(foreach d, $(date), $(eval $(call date_r,$(d))))
+pipeRimplicit += $(date:%=date_%)
 
 ## date_27x.Rout: date.R
+
+prov += quc blz rpt
+define prov_r
+%.prov_$(1).Rout: $(1).R date_%.rds; $$(pipeR)
+endef
+$(foreach p, $(prov), $(eval $(call prov_r,$(p))))
+pipeRimplicit += $(prov:%=prov_%)
+
+## 27z.prov_quc.Rout: quc.R
 
 ######################################################################
 
