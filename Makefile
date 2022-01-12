@@ -240,9 +240,24 @@ pipeRimplicit += names
 places = here there elsewhere
 recipeChain += places
 
-places_r = %.$(1).places.Rout: $(1).R %.names.rds; $$(pipeR)
+places_r = %.$(1).places.Rout: $(1).R %.names.rds ; $$(pipeR)
 
-## here.fred.Rout: here.R
+## pipeRimplicit += there.places
+
+## fred.here.places.Rout: here.R
+
+######################################################################
+
+foods = yogurt crumbles
+
+foods_dep = %.places.rda
+
+scriptChain += foods
+
+## pipeRimplicit += crumbles.foods
+
+## fred.here.yogurt.foods.Rout: yogurt.R
+## sen.there.crumbles.foods.Rout: crumbles.R
 
 ######################################################################
 

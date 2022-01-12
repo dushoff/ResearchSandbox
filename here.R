@@ -1,5 +1,5 @@
 library(shellpipes)
 
-name <- rdsRead()
-print(name)
-print("is already here!")
+str <- paste(rdsRead(), "is already here!")
+
+saveVars(str)
