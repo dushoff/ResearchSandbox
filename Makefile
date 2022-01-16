@@ -261,6 +261,18 @@ scriptChain += foods
 
 ######################################################################
 
+## Gen 2
+
+## 9.xval.Rout:
+
+xy += square
+scriptStep += xy
+xy_dep = %.xval.rda
+
+# 9.square.xy.Rout: square.xy.R
+
+######################################################################
+
 ### Makestuff
 
 Sources += Makefile
