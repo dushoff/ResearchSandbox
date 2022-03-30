@@ -33,6 +33,10 @@ autopipeR = defined
 
 ######################################################################
 
+poly.Rout: poly.R
+
+######################################################################
+
 ## RSA reinfection INACTIVE (see reinfection)
 ## Read and tidy; save two tidy data frames and a "graphing" frame
 rsaRe.Rout: rsaRe.R resources/rsaRe.rds
