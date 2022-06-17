@@ -11,6 +11,8 @@ vim_session:
 
 ######################################################################
 
+Sources += $(wildcard *.R)
+
 libs.Rout: libs.R
 	$(pipeR)
 
