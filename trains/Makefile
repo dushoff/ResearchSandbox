@@ -16,8 +16,14 @@ Sources += $(wildcard *.R)
 libs.Rout: libs.R
 	$(pipeR)
 
-## matrix exponentiation is not dead easy, so let's try eigen-decomposition for fun
+## matrix exponentiation seems easier to do by hand! (with eigen- decomposition).
 trains.Rout: trains.R
+	$(pipeR)
+
+## trains.Routput: trains.R
+
+## This is a fork of trains to see if we can use svd instead of eigen
+strains.Rout: strains.R
 	$(pipeR)
 
 ######################################################################

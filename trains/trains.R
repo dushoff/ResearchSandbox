@@ -16,9 +16,14 @@ chain <- function(v){
 	return(m)
 }
 
-m <- (chain(1:4))
-print(m)
+## Singular value decomposition!
+sdc <- function(m){
+	sv <- svd(m)
+	return(list(V=sv$u, W=t(sv$v), lam=sv$d))
+}
 
+## This probably works really well for this application
+## but would be expected to bomb for singular eigenvalues
 ## Eigenvalue decomposition
 edc <- function(m){
 	ev <- eigen(m)
@@ -33,18 +38,18 @@ splitExp <- function(s, t=1){
 	return(s$V %*% D %*% s$W)
 }
 
-chainSim <- function(rates, time){
+## We are currently reporting the derivative, not the cumulative
+## exp(Mt) ⇒ M exp(-Mt)
+chainSim <- Vectorize(vectorize="time", function(rates, time){
+	size <- length(rates)+1
 	m <- chain(rates)
 	msplit <- edc(m)
-	v0 <- numeric(length(rates)+1)
+	v0 <- numeric(size)
 	v0[[1]] <- 1
 
-	return(m %*% splitExp(msplit, time) %*% v0)
-}
+	flow <- as.vector(m %*% splitExp(msplit, time) %*% v0)
+	return(flow[size])
+})
 
-chainSim(1:4, 0)
-chainSim(1:4, 1)
-chainSim(1:4, 2)
-chainSim(1:4, 3)
+print(chainSim((1:4)/10, 0:100))
 
-## exp(Mt) ⇒ M exp(-Mt)
