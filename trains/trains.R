@@ -43,7 +43,7 @@ splitExp <- function(s, t=1){
 chainSim <- Vectorize(vectorize="time", function(rates, time){
 	size <- length(rates)+1
 	m <- chain(rates)
-	msplit <- edc(m)
+	msplit <- sdc(m)
 	v0 <- numeric(size)
 	v0[[1]] <- 1
 
@@ -51,5 +51,9 @@ chainSim <- Vectorize(vectorize="time", function(rates, time){
 	return(flow[size])
 })
 
-print(chainSim((1:4)/10, 0:100))
+## print(chainSim((1:4)/10, 0:100))
+
+s <- sdc(chain(1:2))
+e <- edc(chain(1:2))
+
 

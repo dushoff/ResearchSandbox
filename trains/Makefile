@@ -21,10 +21,7 @@ trains.Rout: trains.R
 	$(pipeR)
 
 ## trains.Routput: trains.R
-
-## This is a fork of trains to see if we can use svd instead of eigen
-strains.Rout: strains.R
-	$(pipeR)
+## trains.Routput.compare: trains.R
 
 ######################################################################
 
@@ -56,6 +53,7 @@ makestuff/%.stamp:
 -include makestuff/os.mk
 
 -include makestuff/pipeR.mk
+-include makestuff/compare.mk
 
 -include makestuff/git.mk
 -include makestuff/visual.mk
