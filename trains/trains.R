@@ -20,12 +20,22 @@ chain <- function(v){
 ## matrix exponentiation based on eigenvalue decomposition
 ## Breaks badly at or near Erlang
 ## apparently matrix exponentiation is hard; should write ode solver
-edc <- function(m){
+edcold <- function(m){
 	ev <- eigen(m)
 	V <- ev$vectors
 	W <- solve(V)
 	lam <- ev$values
 	return(list(V=V, W=W, lam=lam))
+}
+
+edc <- function(m){
+	ev <- eigen(m)
+	V <- ev$vectors
+	lam <- ev$values
+	W <- t(eigen(t(m))$vectors)
+	return(list(V=V, W=W, lam=lam))
+	corr <- solve(W %*% V)
+	return(list(V=V, W=corr%*%W, lam=lam))
 }
 
 ## calculate exp(Mt) for a pre-split matrix M (s is an edc result)
@@ -102,7 +112,9 @@ cvr <- function(c, boxes, minrat=0.01){
 	)
 }
 
-quit()
+v <- c(1, 1, 1, 2)
+v <- 1:4
+m <- chain(v)
 
 pickRates <- function(m, c, boxes=8){
 	rho <- cvr(c, boxes)
@@ -110,11 +122,18 @@ pickRates <- function(m, c, boxes=8){
 	return(r0*empMean(r0)/m)
 }
 
+m <- chain(pickRates(5, 0.25, boxes=4))
+dc <- edc(m)
+
+dc$W %*% dc$V
+
+quit()
+
 time <- 1:20
-erlangRates <- pickRates(5, 0.3, boxes=4)
+erlangRates <- pickRates(5, 0.25, boxes=4)
 erlangSim <- chainSim(erlangRates, time)
 
-trainRates <- pickRates(5, 0.3, boxes=12)
+trainRates <- pickRates(5, 0.25, boxes=12)
 trainSim <- chainSim(trainRates, time)
 
 plot(time, erlangSim, type="b", log="y")
