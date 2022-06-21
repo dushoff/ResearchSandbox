@@ -11,21 +11,26 @@ vim_session:
 
 ######################################################################
 
+autopipeR=defined
+
 Sources += $(wildcard *.R)
 
 libs.Rout: libs.R
 	$(pipeR)
 
-## matrix exponentiation seems easier to do by hand! (with eigen- decomposition).
+## Simulate transmission distributions by exponentiating rate matrices
+## matrix exponentiation seems easier to do by hand! (with eigen- decomposition). This is not stable but I don't know how to do it another way
+## probably ok for rate matrices specifically
 trains.Rout: trains.R
 	$(pipeR)
 
-## trains.Routput: trains.R
-## trains.Routput.compare: trains.R
+## how do we make geometric series with desired mean and cv?
+geometry.Rout: geometry.R
 
 ######################################################################
 
-## Messed up efforts to not clone
+## Messed up efforts to not clone makestuff
+## (accidentally cloned on jetpack)
 
 ifdef xEDIT
 fluff:
