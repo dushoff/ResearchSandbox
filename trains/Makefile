@@ -18,11 +18,11 @@ Sources += $(wildcard *.R)
 libs.Rout: libs.R
 	$(pipeR)
 
-## Simulate transmission distributions by exponentiating rate matrices
-## matrix exponentiation seems easier to do by hand! (with eigen- decomposition). This is not stable but I don't know how to do it another way
-## probably ok for rate matrices specifically
+## Functions for "trains" (linear chains that are more flexible than the Erlang "boxcars")
 trains.Rout: trains.R
 	$(pipeR)
+
+## trains.Routput: trains.R
 
 ## how do we make geometric series with desired mean and cv?
 geometry.Rout: geometry.R
