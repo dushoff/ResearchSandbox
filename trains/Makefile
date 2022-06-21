@@ -1,4 +1,4 @@
-## This is [project.Makefile] …
+## This is sandbox/trains 
 
 current: target
 -include target.mk
