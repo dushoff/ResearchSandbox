@@ -4,7 +4,12 @@
 
 ## We typically don't specify diagonal elements but instead pick them to balance the positive off-diagonal elements specified.
 
-## A chain matrix has flows only along the main sub-diagonal (2, 1) → (n+1, n). The diagonal elements are the negations of these n flows. I gave up on trying to use the possibly conceptually helpful (n+1)×n approach because it gets too clunky. We now make an (n+1)×(n+1) square matrix (by appending a column of zeroes for the absorbing state. approach because it gets too clunky. We now make and 
+## A chain matrix has flows only along the main sub-diagonal (2, 1) → (n+1, n). The diagonal elements are the negations of these n flows. I gave up on trying to use the possibly conceptually helpful (n+1)×n approach because it gets too clunky. We now make an (n+1)×(n+1) square matrix (by appending a column of zeroes for the absorbing state). 
+
+library(Matrix)
+
+library(shellpipes); startGraphics()
+
 chain <- function(v){
 	l <- length(v)
 	m <- matrix(0
@@ -17,56 +22,20 @@ chain <- function(v){
 	return(m)
 }
 
-## matrix exponentiation based on eigenvalue decomposition
-## Breaks badly at or near Erlang
-## apparently matrix exponentiation is hard; should write ode solver
-edcold <- function(m){
-	ev <- eigen(m)
-	V <- ev$vectors
-	W <- solve(V)
-	lam <- ev$values
-	return(list(V=V, W=W, lam=lam))
-}
-
-edc <- function(m){
-	ev <- eigen(m)
-	V <- ev$vectors
-	lam <- ev$values
-	W <- t(eigen(t(m))$vectors)
-	return(list(V=V, W=W, lam=lam))
-	corr <- solve(W %*% V)
-	return(list(V=V, W=corr%*%W, lam=lam))
-}
-
-## calculate exp(Mt) for a pre-split matrix M (s is an edc result)
-splitExp <- function(s, t=1){
-	D <- diag(exp(s$lam*t))
-	return(s$V %*% D %*% s$W)
-}
-
 ## calculate instantaneous flow out of the core of rate matrix M
 ## as the last element of Mexp(Mt)v0 
 chainSimInst <- function(rates, times){
-	size <- length(rates)+1
-	m <- chain(rates)
-	msplit <- edc(m)
-	v0 <- numeric(size)
-	v0[[1]] <- 1
-
-	return(sapply(times, function(t){
-		return(as.vector(m %*% splitExp(msplit, t) %*% v0)[size])
-	}))
+	return(0)
 }
 
 chainSim <- function(rates, times){
 	size <- length(rates)+1
 	m <- chain(rates)
-	msplit <- edc(m)
+
 	v0 <- numeric(size)
 	v0[[1]] <- 1
-
 	cum <- sapply(c(0, times), function(t){
-		return(as.vector(splitExp(msplit, t) %*% v0)[size])
+		return(as.vector(expm(m*t) %*% v0)[size])
 	})
 
 	return(diff(cum))
@@ -122,13 +91,6 @@ pickRates <- function(m, c, boxes=8){
 	return(r0*empMean(r0)/m)
 }
 
-m <- chain(pickRates(5, 0.25, boxes=4))
-dc <- edc(m)
-
-dc$W %*% dc$V
-
-quit()
-
 time <- 1:20
 erlangRates <- pickRates(5, 0.25, boxes=4)
 erlangSim <- chainSim(erlangRates, time)
@@ -136,7 +98,7 @@ erlangSim <- chainSim(erlangRates, time)
 trainRates <- pickRates(5, 0.25, boxes=12)
 trainSim <- chainSim(trainRates, time)
 
-plot(time, erlangSim, type="b", log="y")
-lines(time, trainSim, type="b")
+plot(time, erlangSim, type="b", col="green", log="y")
+lines(time, trainSim, type="b", col="blue")
 
-
+try(pickRates(3, 0.1))
