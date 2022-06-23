@@ -22,6 +22,36 @@ chain <- function(v){
 	return(m)
 }
 
+<<<<<<< HEAD
+=======
+## matrix exponentiation based on eigenvalue decomposition
+## Breaks badly at or near Erlang
+## apparently matrix exponentiation is hard; should write ode solver
+edcold <- function(m){
+	ev <- eigen(m)
+	V <- ev$vectors
+	W <- solve(V)
+	lam <- ev$values
+	return(list(V=V, W=W, lam=lam))
+}
+
+edc <- function(m){
+	ev <- eigen(m)
+	V <- ev$vectors
+	lam <- ev$values
+	W <- t(eigen(t(m))$vectors)
+	## return(list(V=V, W=W, lam=lam))
+	corr <- solve(W %*% V)
+	return(list(V=V, W=corr%*%W, lam=lam))
+}
+
+## calculate exp(Mt) for a pre-split matrix M (s is an edc result)
+splitExp <- function(s, t=1){
+	D <- diag(exp(s$lam*t))
+	return(s$V %*% D %*% s$W)
+}
+
+>>>>>>> 7039705e66e5271ca9b541ec66af3f21f7776067
 ## calculate instantaneous flow out of the core of rate matrix M
 ## as the last element of Mexp(Mt)v0 
 chainSimInst <- function(rates, times){
@@ -92,10 +122,10 @@ pickRates <- function(m, c, boxes=8){
 }
 
 time <- 1:20
-erlangRates <- pickRates(5, 0.25, boxes=4)
+erlangRates <- pickRates(5, 0.3, boxes=4)
 erlangSim <- chainSim(erlangRates, time)
 
-trainRates <- pickRates(5, 0.25, boxes=12)
+trainRates <- pickRates(5, 0.3, boxes=12)
 trainSim <- chainSim(trainRates, time)
 
 plot(time, erlangSim, type="b", col="green", log="y")
