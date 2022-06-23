@@ -33,7 +33,7 @@ edc <- function(m){
 	V <- ev$vectors
 	lam <- ev$values
 	W <- t(eigen(t(m))$vectors)
-	return(list(V=V, W=W, lam=lam))
+	## return(list(V=V, W=W, lam=lam))
 	corr <- solve(W %*% V)
 	return(list(V=V, W=corr%*%W, lam=lam))
 }
@@ -122,19 +122,15 @@ pickRates <- function(m, c, boxes=8){
 	return(r0*empMean(r0)/m)
 }
 
-m <- chain(pickRates(5, 0.25, boxes=4))
-dc <- edc(m)
-
-dc$W %*% dc$V
-
-quit()
-
 time <- 1:20
-erlangRates <- pickRates(5, 0.25, boxes=4)
+erlangRates <- pickRates(5, 0.3, boxes=4)
 erlangSim <- chainSim(erlangRates, time)
 
-trainRates <- pickRates(5, 0.25, boxes=12)
+trainRates <- pickRates(5, 0.3, boxes=12)
 trainSim <- chainSim(trainRates, time)
+
+plot(time, erlangSim, type="b", log="")
+lines(time, trainSim, type="b")
 
 plot(time, erlangSim, type="b", log="y")
 lines(time, trainSim, type="b")
