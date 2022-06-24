@@ -4,7 +4,12 @@
 
 ## We typically don't specify diagonal elements but instead pick them to balance the positive off-diagonal elements specified.
 
-## A chain matrix has flows only along the main sub-diagonal (2, 1) → (n+1, n). The diagonal elements are the negations of these n flows. I gave up on trying to use the possibly conceptually helpful (n+1)×n approach because it gets too clunky. We now make an (n+1)×(n+1) square matrix (by appending a column of zeroes for the absorbing state. approach because it gets too clunky. We now make and 
+## A chain matrix has flows only along the main sub-diagonal (2, 1) → (n+1, n). The diagonal elements are the negations of these n flows. I gave up on trying to use the possibly conceptually helpful (n+1)×n approach because it gets too clunky. We now make an (n+1)×(n+1) square matrix (by appending a column of zeroes for the absorbing state). 
+
+library(Matrix)
+
+library(shellpipes); startGraphics()
+
 chain <- function(v){
 	l <- length(v)
 	m <- matrix(0
@@ -17,6 +22,8 @@ chain <- function(v){
 	return(m)
 }
 
+<<<<<<< HEAD
+=======
 ## matrix exponentiation based on eigenvalue decomposition
 ## Breaks badly at or near Erlang
 ## apparently matrix exponentiation is hard; should write ode solver
@@ -44,29 +51,21 @@ splitExp <- function(s, t=1){
 	return(s$V %*% D %*% s$W)
 }
 
+>>>>>>> 7039705e66e5271ca9b541ec66af3f21f7776067
 ## calculate instantaneous flow out of the core of rate matrix M
 ## as the last element of Mexp(Mt)v0 
 chainSimInst <- function(rates, times){
-	size <- length(rates)+1
-	m <- chain(rates)
-	msplit <- edc(m)
-	v0 <- numeric(size)
-	v0[[1]] <- 1
-
-	return(sapply(times, function(t){
-		return(as.vector(m %*% splitExp(msplit, t) %*% v0)[size])
-	}))
+	return(0)
 }
 
 chainSim <- function(rates, times){
 	size <- length(rates)+1
 	m <- chain(rates)
-	msplit <- edc(m)
+
 	v0 <- numeric(size)
 	v0[[1]] <- 1
-
 	cum <- sapply(c(0, times), function(t){
-		return(as.vector(splitExp(msplit, t) %*% v0)[size])
+		return(as.vector(expm(m*t) %*% v0)[size])
 	})
 
 	return(diff(cum))
@@ -135,4 +134,7 @@ lines(time, trainSim, type="")
 plot(time, erlangSim, type="b", log="y")
 lines(time, trainSim, type="")
 
+plot(time, erlangSim, type="b", col="green", log="y")
+lines(time, trainSim, type="b", col="blue")
 
+try(pickRates(3, 0.1))
