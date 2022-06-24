@@ -130,9 +130,9 @@ trainRates <- pickRates(5, 0.3, boxes=12)
 trainSim <- chainSim(trainRates, time)
 
 plot(time, erlangSim, type="b", log="")
-lines(time, trainSim, type="b")
+lines(time, trainSim, type="")
 
 plot(time, erlangSim, type="b", log="y")
-lines(time, trainSim, type="b")
+lines(time, trainSim, type="")
 
 
