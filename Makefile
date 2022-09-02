@@ -6,20 +6,19 @@ Ignore = target.mk
 
 # -include makestuff/perl.def
 
-vim_session:
-	bash -cl "vmt"
+vim_session: bash -cl "vmt"
 
 ######################################################################
 
-Ignore += README.html
-Sources += README.md
+Ignore += README.html Sources += README.md
 
-Ignore += resources
-resources/%: resources
+Ignore += resources resources/%: resources
 resources:
 	$(resDrop)
 
 ######################################################################
+
+alldirs += trains
 
 ## Bicko pages glitch
 
@@ -37,7 +36,6 @@ poly.Rout: poly.R
 
 ######################################################################
 
-## Test curves
 curve.Rout: curve.R
 
 ######################################################################
