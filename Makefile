@@ -287,6 +287,13 @@ rdock:
 
 ######################################################################
 
+## Islands problem (Bicko meta interview)
+
+islands.Rout: islands.R islands.tsv
+	$(pipeR)
+
+######################################################################
+
 ### Makestuff
 
 Sources += Makefile
