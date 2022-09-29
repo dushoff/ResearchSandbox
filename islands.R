@@ -17,11 +17,16 @@ gridMat <- function(v){
 gridAdj <- function(r, c){
 	gs <- r*c
 	m <- matrix(nrow=gs, ncol=gs)
-	for(i in 1:gs){
-		for(j in 1:gs){
-			diff <- abs(i-j)
-			rdiff <- abs((i%%c) - (j%%c))
-			m[[i,j]] <- ifelse(diff==0 | rdiff==1 | diff==c, 1, 0)
+	for(irow in 1:r){
+		for(icol in 1:c){
+			i <- (irow-1)*c+icol
+			for(jrow in 1:r){
+				for(jcol in 1:c){
+					j <- (jrow-1)*c+jcol
+					dist <- abs(irow-jrow) + abs(icol-jcol)
+					m[[i,j]] <- as.numeric(dist<=1)
+				}
+			}
 		}
 	}
 	return(m)
@@ -56,7 +61,7 @@ gridfull <- function(v){
 
 countIslands <- function(v){
 	gf <- gridfull(v)
-	gl <- apply(gf, 1, function(v) return(min(which(v==1))))
+	gl <- apply(gf, 1, function(v) return(suppressWarnings(min(which(v==1)))))
 	gl[gl==Inf] <- NA
 	gl <- ifelse(is.na(gl), 0, as.numeric(as.factor(gl)))
 	attr(gl, "cols") <- attr(v, "cols")
