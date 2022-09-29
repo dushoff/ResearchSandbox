@@ -12,6 +12,7 @@ gridMat <- function(v){
 	return(m)
 }
 
+## BROKEN
 ## Construct a grid adjacency matrix (and a wrapper to pass a grid object)
 gridAdj <- function(r, c){
 	gs <- r*c
@@ -19,7 +20,8 @@ gridAdj <- function(r, c){
 	for(i in 1:gs){
 		for(j in 1:gs){
 			diff <- abs(i-j)
-			m[[i,j]] <- ifelse(diff==0 | diff==1 | diff==c, 1, 0)
+			rdiff <- abs((i%%c) - (j%%c))
+			m[[i,j]] <- ifelse(diff==0 | rdiff==1 | diff==c, 1, 0)
 		}
 	}
 	return(m)
