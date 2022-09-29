@@ -290,6 +290,7 @@ rdock:
 ## Islands problem (Bicko meta interview)
 
 Sources += islands.tsv
+## islands.Rout.tsv: islands.R islands.tsv
 islands.Rout: islands.R islands.tsv
 	$(pipeR)
 

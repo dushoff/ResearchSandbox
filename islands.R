@@ -55,13 +55,19 @@ gridfull <- function(v){
 countIslands <- function(v){
 	gf <- gridfull(v)
 	gl <- apply(gf, 1, function(v) return(min(which(v==1))))
-	return(length(unique(gl))-1)
+	gl[gl==Inf] <- NA
+	gl <- ifelse(is.na(gl), 0, as.numeric(as.factor(gl)))
+	attr(gl, "cols") <- attr(v, "cols")
+	return(gl)
 }
 
 ### Example
-print(
+(
 	tsvRead(col_names=FALSE)
 	|> as.matrix()
 	|> gridVec()
 	|> countIslands()
+	|> gridMat()
+	|> as.data.frame()
+	|> tsvSave(col_names=FALSE)
 )
