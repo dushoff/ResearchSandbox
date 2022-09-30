@@ -301,6 +301,8 @@ islands.Rout: islands.R islands.tsv
 Ignore += a_plot.Rout.pdf
 Sources += arxiv.sty
 
+Ignore += drop.tex
+Sources += drop.rmd
 drop.pdf: drop.rmd
 	Rscript --vanilla -e 'library("rmarkdown"); render("$<", output_file="$@")'
 
