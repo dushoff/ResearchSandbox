@@ -296,6 +296,16 @@ islands.Rout: islands.R islands.tsv
 
 ######################################################################
 
+## pandoc latex extension what??
+
+Ignore += a_plot.Rout.pdf
+Sources += arxiv.sty
+
+drop.pdf: drop.rmd
+	Rscript --vanilla -e 'library("rmarkdown"); render("$<", output_file="$@")'
+
+######################################################################
+
 ### Makestuff
 
 Sources += Makefile
