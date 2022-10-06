@@ -33,10 +33,10 @@ autopipeR = defined
 ######################################################################
 
 Sources += frinda.tex
+Ignore += frinda.html
 frinda.html: frinda.tex
 	pandoc $< -t html -s --mathjax -o $@
 
-Ignore += frinda.pdf
 frinda.pdf: frinda.tex
 	$(pandocs)
 
