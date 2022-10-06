@@ -32,6 +32,12 @@ autopipeR = defined
 
 ######################################################################
 
+frinda.html: frinda.tex
+	pandoc $< -t html -s --mathjax -o $@
+
+frinda.pdf: frinda.tex
+	$(pandocs)
+
 poly.Rout: poly.R
 
 ######################################################################
