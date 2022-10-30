@@ -1,0 +1,4 @@
+d: diff(x^(25/2)*8^(5*x/2), x);
+factor(d);
+fullratsimp(d);
+
