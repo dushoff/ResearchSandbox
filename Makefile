@@ -26,6 +26,16 @@ README.html.pages:
 
 ######################################################################
 
+## Miriam math
+
+bigsin.Rout: bigsin.R
+
+derivative.mac.out: derivative.mac
+	maxima -b $< > $@
+
+
+######################################################################
+
 Sources += $(wildcard *.R *.stan)
 
 autopipeR = defined
