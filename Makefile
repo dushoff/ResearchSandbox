@@ -42,6 +42,14 @@ autopipeR = defined
 
 ######################################################################
 
+Sources += frinda.tex
+Ignore += frinda.html
+frinda.html: frinda.tex
+	pandoc $< -t html -s --mathjax -o $@
+
+frinda.pdf: frinda.tex
+	$(pandocs)
+
 poly.Rout: poly.R
 
 ######################################################################
@@ -300,8 +308,21 @@ rdock:
 ## Islands problem (Bicko meta interview)
 
 Sources += islands.tsv
+## islands.Rout.tsv: islands.R islands.tsv
 islands.Rout: islands.R islands.tsv
 	$(pipeR)
+
+######################################################################
+
+## pandoc latex extension what??
+
+Ignore += a_plot.Rout.pdf
+Sources += arxiv.sty
+
+Ignore += drop.tex
+Sources += drop.rmd
+drop.pdf: drop.rmd
+	Rscript --vanilla -e 'library("rmarkdown"); render("$<", output_file="$@")'
 
 ######################################################################
 
