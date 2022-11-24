@@ -36,6 +36,7 @@ Ignore += *.mac.out
 derivative.mac.out: derivative.mac
 	maxima -b $< > $@
 
+critical.Rout: critical.R
 
 ######################################################################
 
