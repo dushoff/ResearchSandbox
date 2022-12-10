@@ -38,6 +38,10 @@ derivative.mac.out: derivative.mac
 
 critical.Rout: critical.R
 
+pizza.Rout: pizza.R
+
+squirrel.Rout: squirrel.R
+
 ######################################################################
 
 Sources += $(wildcard *.R *.stan)
