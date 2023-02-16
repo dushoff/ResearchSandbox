@@ -50,6 +50,13 @@ autopipeR = defined
 
 ######################################################################
 
+## Roswell; richness simulations
+
+rrich.Rout: rrich.R
+rrsimple.Rout: rrsimple.R
+
+######################################################################
+
 Sources += frinda.tex
 Ignore += frinda.html
 frinda.html: frinda.tex
