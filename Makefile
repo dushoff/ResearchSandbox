@@ -10,6 +10,14 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+clarStrength.Rout: clarStrength.R
+
+clarStrength.md: clarStrength.Rout.pdf
+
+digestive.Rout: digestive.R digestive.tsv
+
+######################################################################
+
 Ignore += README.html Sources += README.md
 
 Ignore += resources resources/%: resources
