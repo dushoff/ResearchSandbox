@@ -14,6 +14,7 @@ clarStrength.Rout: clarStrength.R
 
 clarStrength.md: clarStrength.Rout.pdf
 
+Sources += digestive.tsv
 digestive.Rout: digestive.R digestive.tsv
 
 ######################################################################
