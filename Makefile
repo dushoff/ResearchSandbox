@@ -1,6 +1,7 @@
 ## This is JD's research sandbox
 
 # http://dushoff.github.io/ResearchSandbox/clarStrength.Rout.pdf
+# http://dushoff.github.io/ResearchSandbox/digestive.Rout.pdf
 # http://dushoff.github.io/sandbox/
 
 current: target
