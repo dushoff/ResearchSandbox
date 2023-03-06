@@ -1,5 +1,8 @@
 ## This is JD's research sandbox
 
+# http://dushoff.github.io/ResearchSandbox/clarStrength.Rout.pdf
+# http://dushoff.github.io/sandbox/
+
 current: target
 -include target.mk
 Ignore = target.mk
@@ -14,7 +17,7 @@ clarStrength.Rout: clarStrength.R
 
 clarStrength.md: clarStrength.Rout.pdf
 
-Sources += digestive.tsv
+Sources += digestive.tsv digestive.md
 digestive.Rout: digestive.R digestive.tsv
 
 ######################################################################
