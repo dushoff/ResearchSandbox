@@ -68,6 +68,11 @@ autopipeR = defined
 rrich.Rout: rrich.R
 rrsimple.Rout: rrsimple.R
 
+## Messing around on the bus
+richtest.Rout: richtest.R
+
+samptest.Rout: samptest.R
+
 ######################################################################
 
 Sources += frinda.tex
