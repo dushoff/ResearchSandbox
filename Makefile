@@ -40,6 +40,7 @@ README.html.pages:
 
 ######################################################################
 
+## Some tabular manipulations for someone
 bickoIndex.Rout: bickoIndex.R
 
 ######################################################################
