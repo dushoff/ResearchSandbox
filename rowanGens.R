@@ -71,51 +71,29 @@ mean_ensemble <- function(expFun, postFun, n, psamps, checks, pars){
 
 histFun <- function(expFun, postFun, n, psamps, checks, pars, br, name){
 	ens <- mean_ensemble(
-		expFun=expFun, postFun=logPost
+		expFun=expFun, postFun=postFun
 		, n=n, psamps=psamps, checks=checks
 		, pars=pars
 	)
-	return(hist(ens, breaks=(0:br)/br, main=name))
+	return(hist(ens, breaks=(0:br)/br, main=name, xlab="P"))
 }
 
-histFun(name="log method"
-	, expFun=lnExperiment
-	, postFun=logPost
-	, pars=list(mspread=2, sdshape=4, sdmean=0.1)
-	, n=1000
-	, psamps=1000
-	, checks=5000
-	, br=40
-)
+histComp <- function(pars, n=20, psamps=1000, checks=5000, br=40){
+	par(mfrow=c(2, 1))
+	print(histFun("log method", postFun=logPost
+		, expFun=lnExperiment
+		, pars=pars
+		, n=n
+		, psamps=psamps, checks=checks, br=br
+	))
+	print(histFun("linear method", postFun=cltPost
+		, expFun=lnExperiment
+		, pars=pars
+		, n=n
+		, psamps=psamps, checks=checks, br=br
+	))
+}
 
-histFun(name="simple method"
-	, expFun=lnExperiment
-	, postFun=cltPost
-	, pars=list(mspread=2, sdshape=4, sdmean=0.1)
-	, n=1000
-	, psamps=1000
-	, checks=5000
-	, br=40
-)
-
-
-histFun(name="log method"
-	, expFun=lnExperiment
-	, postFun=logPost
-	, pars=list(mspread=4, sdshape=2, sdmean=1)
-	, n=1000
-	, psamps=1000
-	, checks=5000
-	, br=40
-)
-
-histFun(name="simple method"
-	, expFun=lnExperiment
-	, postFun=cltPost
-	, pars=list(mspread=4, sdshape=2, sdmean=1)
-	, n=1000
-	, psamps=1000
-	, checks=5000
-	, br=40
-)
-
+histComp(pars=list(mspread=2, sdshape=4, sdmean=0.1))
+histComp(pars=list(mspread=4, sdshape=2, sdmean=1))
+histComp(n=1000, pars=list(mspread=4, sdshape=2, sdmean=1))
