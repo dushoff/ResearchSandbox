@@ -15,6 +15,17 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+## Bayesian sampling and testing
+
+rowanGens.Rout: rowanGens.R
+
+lnSimp.Rout: lnSimp.R
+
+Ignore += testData.csv
+testData.Rout: testData.R testData.csv
+
+######################################################################
+
 clarStrength.Rout: clarStrength.R
 
 clarStrength.md: clarStrength.Rout.pdf
