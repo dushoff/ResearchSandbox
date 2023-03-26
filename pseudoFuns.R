@@ -1,11 +1,9 @@
+library(shellpipes)
+
 ## Testing simple approaches to propagate error from our estimate of mean serial interval
 
-set.seed(1412)
-
-######################################################################
-
 ## Pick parameters from a hyper-distribution and then pick deviates
-## lognormal example for now
+## lognormal 
 lnExperiment <- function(pars, n){
 	with(pars, {
 		mul <- rnorm(1, 0, mspread)
@@ -13,6 +11,18 @@ lnExperiment <- function(pars, n){
 		return(list(dat=rlnorm(n, mul, sdl)
 			, mu=exp(mul+sdl^2/2)
 			, cv=(exp(sdl^2)-1)*exp(sdl^2)
+		))
+	})
+}
+
+## lognormal 
+gamExperiment <- function(pars, n){
+	with(pars, {
+		mu <- rlnorm(1, 0, mspread)
+		shape <- rgamma(1, shape=shapeshape, scale=shapemean/shapeshape)
+		return(list(dat=rgamma(n, shape=shape, scale=mu/shape)
+			, mu=mu
+			, cv=sqrt(1/shape)
 		))
 	})
 }
@@ -69,7 +79,7 @@ mean_ensemble <- function(expFun, postFun, n, psamps, checks, pars){
 
 ######################################################################
 
-histFun <- function(expFun, postFun, n, psamps, checks, pars, br, name){
+histFun <- function(expFun, postFun, n, psamps, checks, pars, br=40, name){
 	ens <- mean_ensemble(
 		expFun=expFun, postFun=postFun
 		, n=n, psamps=psamps, checks=checks
@@ -78,22 +88,4 @@ histFun <- function(expFun, postFun, n, psamps, checks, pars, br, name){
 	return(hist(ens, breaks=(0:br)/br, main=name, xlab="P"))
 }
 
-histComp <- function(pars, n=20, psamps=1000, checks=5000, br=40){
-	par(mfrow=c(2, 1))
-	print(histFun("log method", postFun=logPost
-		, expFun=lnExperiment
-		, pars=pars
-		, n=n
-		, psamps=psamps, checks=checks, br=br
-	))
-	print(histFun("linear method", postFun=cltPost
-		, expFun=lnExperiment
-		, pars=pars
-		, n=n
-		, psamps=psamps, checks=checks, br=br
-	))
-}
-
-histComp(pars=list(mspread=2, sdshape=4, sdmean=0.1))
-histComp(pars=list(mspread=4, sdshape=2, sdmean=1))
-histComp(n=1000, pars=list(mspread=4, sdshape=2, sdmean=1))
+saveEnvironment()

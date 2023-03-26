@@ -17,12 +17,21 @@ vim_session: bash -cl "vmt"
 
 ## Bayesian sampling and testing
 
-rowanGens.Rout: rowanGens.R
-
+## Check calculations, stats
 lnSimp.Rout: lnSimp.R
 
+## Testing pseudo-Bayesian ideas for serial intervals
+pseudoFuns.Rout: pseudoFuns.R
+
+## Compare the clt and the log method; log seems better
+pseudoComp.Rout: pseudoComp.R pseudoFuns.rda
+
+## Look at some data (don't commit)
 Ignore += testData.csv
 testData.Rout: testData.R testData.csv
+
+## Test the good method for realistic gamma or lognormal
+pseudoTest.Rout: pseudoTest.R  pseudoFuns.rda
 
 ######################################################################
 

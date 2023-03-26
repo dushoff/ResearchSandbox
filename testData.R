@@ -14,6 +14,3 @@ print(c(m=m
 	, cv=cv
 	, k=k
 ))
-
-qqnorm(y=si)
-qqnorm(y=log(si))
