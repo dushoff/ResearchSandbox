@@ -2,6 +2,7 @@
 
 # http://dushoff.github.io/ResearchSandbox/clarStrength.Rout.pdf
 # http://dushoff.github.io/ResearchSandbox/digestive.Rout.pdf
+# http://dushoff.github.io/ResearchSandbox/pseudoTest.Rout.pdf
 # http://dushoff.github.io/sandbox/
 ## https://github.com/dushoff/ResearchSandbox
 
