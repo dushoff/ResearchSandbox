@@ -19,13 +19,13 @@ vget = Vectorize(get)
 
 vr <- (
 	read.table(header=TRUE, strip.white=TRUE, sep=":", text="
-		pic : val : unc : atext
-		PL : largeEffect : smallVar : Clearly large|and positive
-		PU : largeEffect : largeVar : Clearly positive,|maybe large
-		PS : smallEffect : smallVar : Clearly positive|and not large
-		US : tinyEffect : medVar : Maybe positive,|clearly small
-		UU : smallEffect : largeVar : Not both large|and negative
-		nopower : tinyEffect : hugeVar : Should have|done a power|analysis first
+		pic : val : unc : atext : ntext
+		PL : largeEffect : smallVar : Clearly large|and positive : different
+		PU : largeEffect : largeVar : Clearly positive,|maybe large : different
+		PS : smallEffect : smallVar : Clearly positive|and not large : different
+		US : tinyEffect : medVar : Maybe positive,|clearly small : different
+		UU : smallEffect : largeVar : Not both large|and negative : different
+		nopower : tinyEffect : hugeVar : Should have|done a power|analysis first : different
 	")
 )
 
@@ -44,6 +44,8 @@ vf <- (vr
 	)
 )
 
+stupid <- function(x){x}
+
 print(ggplot(vf)
 	+ aes(pic, val)
 	+ geom_point()
@@ -55,7 +57,9 @@ print(ggplot(vf)
 		, breaks = -1:1
 		, labels = c("cutoff", 0 , "cutoff")
 	)
-	+ scale_x_discrete(labels=rev(vf$atext))
+	+ scale_x_discrete(labels=rev(vf$atext)
+		, sec.axis=sec_axis(trans=stupid)
+	)
 	+ xlab("")
 	+ ylab("")
 )

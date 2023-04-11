@@ -34,6 +34,9 @@ testData.Rout: testData.R testData.csv
 ## Test the good method for realistic gamma or lognormal
 pseudoTest.Rout: pseudoTest.R  pseudoFuns.rda
 
+## What do gamma distributions look like?
+gamShape.Rout: gamShape.R
+
 ######################################################################
 
 clarStrength.Rout: clarStrength.R
