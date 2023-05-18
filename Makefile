@@ -27,6 +27,7 @@ descriptives.Rout: descriptives.R
 	$(wrapR)
 
 pdfDesc += pdfDesc
+Ignore += pdfDesc.cases.png
 ## pdfDesc.cases.png:
 ## pdfDesc.Rout: pdfDesc.R
 
