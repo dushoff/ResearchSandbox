@@ -16,6 +16,18 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+## Debugging for Bicko
+
+pngDesc += malaria_time_plots
+# malaria_time_plots.cases.png: malaria_time_plots.R descriptives.rda
+# malaria_time_plots.props.png: malaria_time_plots.R descriptives.rda
+malaria_time_plots.Rout: malaria_time_plots.R descriptives.rda
+
+descriptives.Rout: descriptives.R
+	$(wrapR)
+
+######################################################################
+
 ## Bayesian sampling and testing
 
 ## Check calculations, stats
