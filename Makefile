@@ -26,6 +26,10 @@ malaria_time_plots.Rout: malaria_time_plots.R descriptives.rda
 descriptives.Rout: descriptives.R
 	$(wrapR)
 
+pdfDesc += pdfDesc
+## pdfDesc.cases.png:
+## pdfDesc.Rout: pdfDesc.R
+
 ######################################################################
 
 ## Bayesian sampling and testing
