@@ -44,7 +44,7 @@ pseudoFuns.Rout: pseudoFuns.R
 ## Compare the clt and the log method; log seems better
 pseudoComp.Rout: pseudoComp.R pseudoFuns.rda
 
-## Look at some data (don't commit)
+## Look at some data (don't commit these data from Rowan)
 Ignore += testData.csv
 testData.Rout: testData.R testData.csv
 
@@ -83,6 +83,12 @@ README.html.pages:
 
 ## Some tabular manipulations for someone
 bickoIndex.Rout: bickoIndex.R
+
+######################################################################
+
+## Generating positive lm data
+
+safelog.Rout: safelog.R
 
 ######################################################################
 
