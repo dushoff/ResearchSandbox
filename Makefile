@@ -86,9 +86,15 @@ bickoIndex.Rout: bickoIndex.R
 
 ######################################################################
 
-## Generating positive lm data
+## Smooth control functions
 
 safelog.Rout: safelog.R
+
+## Smooth functions to give a large number < min(a, b) or conversely.
+minmax.Rout: minmax.R
+
+## Saturating functions
+saturate.Rout: saturate.R
 
 ######################################################################
 
