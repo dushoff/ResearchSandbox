@@ -16,6 +16,12 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+## ICI3D labs
+
+iLab1.Rout: iLab1.R
+
+######################################################################
+
 ## Debugging for Bicko
 
 pngDesc += malaria_time_plots
