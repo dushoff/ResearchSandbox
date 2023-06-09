@@ -291,6 +291,7 @@ impmakeR += print
 11.xval.square.halve.print.Rout:
 
 7.xval.halve.square.print.Rout:
+7.xval.halve.square.square.square.print.Rout:
 
 ######################################################################
 

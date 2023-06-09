@@ -6,12 +6,11 @@ safelog <- function (x, scale=1){
 
 longlog <- function (x) safelog(x, scale=0.1)
 
-log(2)
-safelog(2)
-safelog(2, scale=0.01)
-safelog(-2)
-safelog(-2, scale=0.01)
+safelog(-25)
+log(30)
 
-curve(longlog, from=-2, to=2)
+curve(0*x, from=-2, to=2, lty=3)
+## curve(longlog, from=-2, to=2)
+## curve(log, from=-2, to=2, add=TRUE)
+## curve(longlog, from=-2, to=2)
 curve(safelog, from=-2, to=2, add=TRUE)
-curve(log, from=-2, to=2, add=TRUE)
