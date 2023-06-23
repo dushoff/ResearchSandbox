@@ -26,6 +26,8 @@ README.html.pages:
 
 ######################################################################
 
+e313.Rout: e313.R
+
 ## Miriam math
 
 bigsin.Rout: bigsin.R
