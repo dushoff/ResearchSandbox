@@ -1,5 +1,11 @@
 ## This is JD's research sandbox
 
+# http://dushoff.github.io/ResearchSandbox/clarStrength.Rout.pdf
+# http://dushoff.github.io/ResearchSandbox/digestive.Rout.pdf
+# http://dushoff.github.io/ResearchSandbox/pseudoTest.Rout.pdf
+# http://dushoff.github.io/sandbox/
+## https://github.com/dushoff/ResearchSandbox
+
 current: target
 -include target.mk
 Ignore = target.mk
@@ -7,6 +13,61 @@ Ignore = target.mk
 # -include makestuff/perl.def
 
 vim_session: bash -cl "vmt"
+
+######################################################################
+
+## ICI3D labs
+
+iLab1.Rout: iLab1.R
+
+######################################################################
+
+## Debugging for Bicko
+
+pngDesc += malaria_time_plots
+# malaria_time_plots.cases.png: malaria_time_plots.R descriptives.rda
+# malaria_time_plots.props.png: malaria_time_plots.R descriptives.rda
+malaria_time_plots.Rout: malaria_time_plots.R descriptives.rda
+
+descriptives.Rout: descriptives.R
+	$(wrapR)
+
+pdfDesc += pdfDesc
+Ignore += pdfDesc.cases.png
+## pdfDesc.cases.png:
+## pdfDesc.Rout: pdfDesc.R
+
+######################################################################
+
+## Bayesian sampling and testing
+
+## Check calculations, stats
+lnSimp.Rout: lnSimp.R
+
+## Testing pseudo-Bayesian ideas for serial intervals
+pseudoFuns.Rout: pseudoFuns.R
+
+## Compare the clt and the log method; log seems better
+pseudoComp.Rout: pseudoComp.R pseudoFuns.rda
+
+## Look at some data (don't commit these data from Rowan)
+Ignore += testData.csv
+testData.Rout: testData.R testData.csv
+
+## Test the good method for realistic gamma or lognormal
+pseudoTest.Rout: pseudoTest.R  pseudoFuns.rda
+
+## What do gamma distributions look like?
+gamShape.Rout: gamShape.R
+
+######################################################################
+
+clarStrength.Rout: clarStrength.R
+
+clarStrength.md: clarStrength.Rout.pdf
+
+Sources += digestive.tsv digestive.md
+digestive.Rout: digestive.R digestive.tsv
 
 ######################################################################
 
@@ -27,6 +88,22 @@ README.html.pages:
 ######################################################################
 
 e313.Rout: e313.R
+
+bickoIndex.Rout: bickoIndex.R
+
+######################################################################
+
+## Smooth control functions
+
+safelog.Rout: safelog.R
+
+## Smooth functions to give a large number < min(a, b) or conversely.
+minmax.Rout: minmax.R
+
+## Saturating functions
+saturate.Rout: saturate.R
+
+######################################################################
 
 ## Miriam math
 
@@ -49,6 +126,18 @@ squirrel.Rout: squirrel.R
 Sources += $(wildcard *.R *.stan)
 
 autopipeR = defined
+
+######################################################################
+
+## Roswell; richness simulations
+
+rrich.Rout: rrich.R
+rrsimple.Rout: rrsimple.R
+
+## Messing around on the bus
+richtest.Rout: richtest.R
+
+samptest.Rout: samptest.R
 
 ######################################################################
 
@@ -203,6 +292,7 @@ impmakeR += print
 11.xval.square.halve.print.Rout:
 
 7.xval.halve.square.print.Rout:
+7.xval.halve.square.square.square.print.Rout:
 
 ######################################################################
 
