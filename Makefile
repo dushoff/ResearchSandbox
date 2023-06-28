@@ -89,6 +89,9 @@ README.html.pages:
 
 e313.Rout: e313.R
 
+e313.result:
+	R --vanilla < e313.R | grep "\"[A-Z]"
+
 bickoIndex.Rout: bickoIndex.R
 
 ######################################################################
