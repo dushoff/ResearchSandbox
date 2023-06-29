@@ -16,6 +16,8 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+brackets.Rout: brackets.R
+
 ## ICI3D labs
 
 iLab1.Rout: iLab1.R
