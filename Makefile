@@ -22,6 +22,27 @@ iLab1.Rout: iLab1.R
 
 ######################################################################
 
+## Make breakpoints
+
+## Put a big .csv file in the pipeline, but only use part of it.
+
+breakSelect.Rout: breakSelect.R bigbreak.tsv
+
+## Only if it doesn't exist at all
+smallbreak.tsv:
+	$(CP) breakSelect.Rout.tsv $@
+
+smallbreak: breakSelect.Rout.tsv smallbreak.tsv
+	diff $^ > /dev/null || $(CP) $< smallbreak.tsv
+
+breakCalculate.Rout: breakCalculate.R smallbreak.tsv
+
+## breakCalculate: bigbreak.tsv breakCalculate.Rout
+breakCalculate: smallbreak
+	$(MAKE) breakCalculate.Rout
+
+######################################################################
+
 ## Debugging for Bicko
 
 pngDesc += malaria_time_plots
