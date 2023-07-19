@@ -24,6 +24,11 @@ iLab1.Rout: iLab1.R
 
 ######################################################################
 
+## Deconstructing glm with Roswell 2023 Jul 18 (Tue)
+## Moved to 
+
+######################################################################
+
 ## Debugging for Bicko
 
 pngDesc += malaria_time_plots
