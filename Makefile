@@ -28,14 +28,16 @@ iLab1.Rout: iLab1.R
 
 ## Put a big .csv file in the pipeline, but only use part of it.
 
+Sources += bigbreak.tsv
 breakSelect.Rout: breakSelect.R bigbreak.tsv
 
 ## Only if it doesn't exist at all
-smallbreak.tsv:
+Ignore += smallbreak.TSV
+smallbreak.TSV:
 	$(CP) breakSelect.Rout.tsv $@
 
-smallbreak: breakSelect.Rout.tsv smallbreak.tsv
-	diff $^ > /dev/null || $(CP) $< smallbreak.tsv
+smallbreak: breakSelect.Rout.tsv smallbreak.TSV
+	diff $^ > /dev/null || $(CP) $< smallbreak.TSV
 
 breakCalculate.Rout: breakCalculate.R smallbreak.tsv
 
