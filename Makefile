@@ -16,6 +16,11 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+## Debugging stan with Mike
+stanX.Rout: stanX.R
+
+Example1.Rout: Example1.stan Example1.R
+
 brackets.Rout: brackets.R
 
 ## ICI3D labs
