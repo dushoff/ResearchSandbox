@@ -18,10 +18,14 @@ vim_session: bash -cl "vmt"
 
 ## macpan2 something
 
+Ignore += quickstart*
 quickstart.Rmd:
 	wget -O $@ "https://raw.githubusercontent.com/canmod/macpan2/refactorcpp/vignettes/quickstart.Rmd"
 
-######################################################################
+## Debugging stan with Mike
+stanX.Rout: stanX.R
+
+Example1.Rout: Example1.stan Example1.R
 
 brackets.Rout: brackets.R
 
