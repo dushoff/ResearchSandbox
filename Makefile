@@ -16,6 +16,13 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+## macpan2 something
+
+quickstart.Rmd:
+	wget -O $@ "https://raw.githubusercontent.com/canmod/macpan2/refactorcpp/vignettes/quickstart.Rmd"
+
+######################################################################
+
 brackets.Rout: brackets.R
 
 ## ICI3D labs
