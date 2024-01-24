@@ -16,6 +16,12 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+## Vectors in R using complex numbers?
+## Works OK
+complexR.Rout: complexR.R
+
+######################################################################
+
 ## macpan2 something
 
 Ignore += quickstart*
