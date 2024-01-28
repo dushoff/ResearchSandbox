@@ -20,6 +20,9 @@ vim_session: bash -cl "vmt"
 ## Works OK
 complexR.Rout: complexR.R
 
+## Electric fields in R
+fields.Rout: fields.R
+
 ######################################################################
 
 ## macpan2 something
