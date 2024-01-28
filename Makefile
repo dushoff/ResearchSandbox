@@ -19,6 +19,8 @@ vim_session: bash -cl "vmt"
 ## Vectors in R using complex numbers?
 ## Works OK
 complexR.Rout: complexR.R
+## Electric fields in R
+fields.Rout: fields.R
 
 stats.Rout: stats.R
 
