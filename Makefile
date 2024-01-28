@@ -20,6 +20,8 @@ vim_session: bash -cl "vmt"
 ## Works OK
 complexR.Rout: complexR.R
 
+stats.Rout: stats.R
+
 ######################################################################
 
 ## macpan2 something
