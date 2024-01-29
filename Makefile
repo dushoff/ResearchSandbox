@@ -116,6 +116,10 @@ clarStrength.Rout: clarStrength.R
 
 clarStrength.md: clarStrength.Rout.pdf
 
+%.clarpix.Rout: clarpix.R %.tsv
+%.clarpix.Rout: clarpix.R %.tsv
+	$(pipeR)
+
 Sources += digestive.tsv digestive.md
 digestive.Rout: digestive.R digestive.tsv
 
