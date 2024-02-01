@@ -24,7 +24,7 @@ vr <- (
 		PU : largeEffect : largeVar : Clearly positive,|maybe large : different
 		PS : smallEffect : smallVar : Clearly positive|and not large : different
 		US : tinyEffect : medVar : Maybe positive,|clearly small : different
-		UU : smallEffect : largeVar : Not both large|and negative : different
+		UU : smallEffect : largeVar : Not both (large|and negative) : different
 		nopower : tinyEffect : hugeVar : Should have|done a power|analysis first : different
 	")
 )

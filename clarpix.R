@@ -17,15 +17,6 @@ span = 2
 vget = Vectorize(get)
 
 vr <- (
-	read.table(header=TRUE, strip.white=TRUE, sep=":", text="
-		pic : val : unc : atext : ntext
-		PL : largeEffect : smallVar : Clearly large|and positive : different
-		PU : largeEffect : largeVar : Clearly positive,|maybe large : different
-		PS : smallEffect : smallVar : Clearly positive|and not large : different
-		US : tinyEffect : medVar : Maybe positive,|clearly small : different
-		UU : smallEffect : largeVar : Not both large|and negative : different
-		nopower : tinyEffect : hugeVar : Should have|done a power|analysis first : different
-	")
 )
 
 ## (vr %>% mutate_if(is.character, as.factor) %>% summary)
