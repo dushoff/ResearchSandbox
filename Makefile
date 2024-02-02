@@ -16,6 +16,12 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+## Default optimizers
+
+optimize.Rout: optimize.R
+
+######################################################################
+
 ## Debugging stan with Mike
 stanX.Rout: stanX.R
 
