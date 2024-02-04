@@ -16,12 +16,19 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+## Default optimizers
+
+optimize.Rout: optimize.R
+
+######################################################################
+
 ## Vectors in R using complex numbers?
 ## Works OK
 complexR.Rout: complexR.R
-
 ## Electric fields in R
 fields.Rout: fields.R
+
+stats.Rout: stats.R
 
 ######################################################################
 
@@ -114,6 +121,10 @@ gamShape.Rout: gamShape.R
 clarStrength.Rout: clarStrength.R
 
 clarStrength.md: clarStrength.Rout.pdf
+
+%.clarpix.Rout: clarpix.R %.tsv
+%.clarpix.Rout: clarpix.R %.tsv
+	$(pipeR)
 
 Sources += digestive.tsv digestive.md
 digestive.Rout: digestive.R digestive.tsv
