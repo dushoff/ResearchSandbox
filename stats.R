@@ -1,12 +1,16 @@
-x <- 0:5
-p <- c(5, 25, 35, 15, 15, 5)/100
+z <- function(c, m, s){
+	return((c-m)/s)
+}
 
-xbar <- sum(p*x)
-V <- sum(p*(x-xbar)^2)
-print(V)
+μ = 162
+σ = 28
 
-.1915/.6915 ## .27693420101229211858
+ztop <- (z(138, μ, σ))
+print(ztop)
+print(pnorm(ztop))
 
-pnorm(5/3.9)
+zbot <- (z(105, μ, σ))
+print(zbot)
+print(pnorm(zbot))
 
-1 - 0.85^10 ## .80312559565927734375
+print(pnorm(ztop) - pnorm(zbot))
