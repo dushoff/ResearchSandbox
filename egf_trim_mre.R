@@ -1,8 +1,8 @@
 library(epigrowthfit)
 
 dat <- data.frame(
-	time = 1:5
-	, inc = c(2, 3, 5, 8, 13)
+	time = c(1:5, 0)
+	, inc = c(2, 3, 5, 8, 13, NA)
 )
 
 fakewin <- data.frame(start = -Inf, end=Inf)
@@ -17,3 +17,4 @@ mod <- egf(model = egf_model(curve = "logistic", family = "nbinom")
 ) 
 
 print(mod)
+plot(mod)
