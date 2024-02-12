@@ -30,6 +30,7 @@ fields.Rout: fields.R
 
 stats.Rout: stats.R
 
+egf_trim_mre.Rout: egf_trim_mre.R
 
 
 ######################################################################
