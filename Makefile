@@ -16,12 +16,6 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
-## Default optimizers
-
-optimize.Rout: optimize.R
-
-######################################################################
-
 ## Vectors in R using complex numbers?
 ## Works OK
 complexR.Rout: complexR.R
