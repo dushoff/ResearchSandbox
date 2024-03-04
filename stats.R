@@ -2,15 +2,16 @@ z <- function(c, m, s){
 	return((c-m)/s)
 }
 
-μ = 162
-σ = 28
+μ = 8 
+σ = 2
 
-ztop <- (z(138, μ, σ))
-print(ztop)
-print(pnorm(ztop))
+print(zbase <- (z(10, μ, σ)))
+print(ztop <- (z(11, μ, σ)))
 
-zbot <- (z(105, μ, σ))
-print(zbot)
-print(pnorm(zbot))
+## Prob > 10 is base
+print(pbase <- pnorm(-zbase))
+print(ptop <- pnorm(ztop))
 
-print(pnorm(ztop) - pnorm(zbot))
+pbot <- 1-pbase
+
+print((ptop-pbot)/pbase)
