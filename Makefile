@@ -11,11 +11,20 @@ current: target
 Ignore = target.mk
 
 # -include makestuff/perl.def
+-include makestuff/python.def
 
 vim_session: bash -cl "vmt"
 
 ######################################################################
 
+##
+
+oranges.Rout: oranges.R
+
+######################################################################
+
+grocery.out: grocery.py
+	$(PITH)
 ## Vectors in R using complex numbers?
 ## Works OK
 complexR.Rout: complexR.R
