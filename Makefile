@@ -21,6 +21,8 @@ vim_session: bash -cl "vmt"
 
 oranges.Rout: oranges.R
 
+tvalues.Rout: tvalues.R
+
 ######################################################################
 
 grocery.out: grocery.py
