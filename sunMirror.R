@@ -6,6 +6,12 @@ sun <- 27.6*deg
 
 snell <- asin(refract*sin(travel))
 
-print(snell/deg)
+## print(snell/deg)
+
+normal <- mean(c(sun, snell-90*deg))
+
+mirror <- 90*deg+normal
+
+print(mirror/deg)
 
 
