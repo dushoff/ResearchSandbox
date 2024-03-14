@@ -23,6 +23,8 @@ oranges.Rout: oranges.R
 
 tvalues.Rout: tvalues.R
 
+sunMirror.Rout: sunMirror.R
+
 ######################################################################
 
 grocery.out: grocery.py
