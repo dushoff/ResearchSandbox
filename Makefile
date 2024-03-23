@@ -25,6 +25,14 @@ tvalues.Rout: tvalues.R
 
 sunMirror.Rout: sunMirror.R
 
+## teacherPlots.R
+## spotify.csv
+
+jdPlots.Rout: spotify.csv jdPlots.R
+ggMusic.Rout: ggMusic.R spotify.csv
+zMusic.Rout: zMusic.R spotify.csv
+220.Rout: 220.R
+
 ######################################################################
 
 grocery.out: grocery.py
