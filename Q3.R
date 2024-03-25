@@ -1,4 +1,12 @@
 
+mon <- 1:12
+mf <- factor(mon, labels=(c(
+	"Jan", "Feb", "Mar", "Apr", "May", "Jun"
+	, "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+)))
+
+print(mf)
+
 spot <- read.csv("spotify.csv")
 
 totalsongs <- length(spot$bpm)

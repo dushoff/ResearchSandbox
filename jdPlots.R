@@ -3,6 +3,9 @@ spot <- read.csv("spotify.csv")
 names(spot)
 attach(spot)
 
+late_release <- released_year[released_year>2010] + 0.5
+hist(late_release)
+
 colors <- c("red", "blue")
 
 bhist <- hist(bpm)
@@ -26,7 +29,6 @@ barplot(bpm_mode_table,
 
 )
 
-quit()
 
 summary(lm(in_apple_charts~in_spotify_charts))
 
@@ -34,6 +36,9 @@ mtab <- table(released_month)
 print(mtab)
 month <- as.numeric(names(mtab))
 monthly_releases <- as.numeric(mtab)
+
+print(data.frame(month, monthly_releases))
+
 plot(
 	month, monthly_releases
 	, type="b"
@@ -46,19 +51,17 @@ plot(
 	valence_percent, danceability_percent
 )
 
-quit()
 
 maxStreams <- max(streams, na.rm=TRUE)
 print(maxStreams)
 
 plot(
 	in_spotify_charts, streams, col="darkblue"
-	, log="xy"
+	## , log="xy"
 	, ylim = c(1e7, maxStreams)
 )
 points(in_apple_charts, streams, col="violetred1")
 
-quit()
 
 energy_ratio <- energy_percent/bpm
 
