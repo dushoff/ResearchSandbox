@@ -8,20 +8,6 @@ h <- 1.8
 reach <- 2.4
 depth <- 5.5
 
-θ_inc <- atan(reach/h)
-θ_ref <- asin(sin(θ_inc)/refract)
-
-print(θ_inc/deg)
-print(θ_ref/deg)
-
-d <- reach + depth*tan(θ_ref) 
-
-print(d)
-
-######################################################################
-
-quit()
-
 ## What is the angle of the incident beam (striking the water) from the vertical?
 ## This is the answer that Miriam got
 ## sin(snell) = refract*sin(travel)
