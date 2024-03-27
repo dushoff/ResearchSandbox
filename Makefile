@@ -25,6 +25,8 @@ tvalues.Rout: tvalues.R
 
 sunMirror.Rout: sunMirror.R
 
+glassTriangle.Rout: glassTriangle.R
+
 ## teacherPlots.R
 ## spotify.csv
 
