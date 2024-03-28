@@ -25,6 +25,8 @@ tvalues.Rout: tvalues.R
 
 sunMirror.Rout: sunMirror.R
 
+glassTriangle.Rout: glassTriangle.R
+
 ## teacherPlots.R
 ## spotify.csv
 
@@ -39,6 +41,11 @@ focus.Rout: focus.R
 ## Optics
 Sources += focus.md
 
+######################################################################
+
+## clmm testing
+
+ordinal.Rout: ordinal.R
 
 ######################################################################
 
