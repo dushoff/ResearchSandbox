@@ -1,4 +1,5 @@
 
+
 deg <- pi/180
 refract <- 1.33
 travel <- 45*deg
