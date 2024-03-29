@@ -3,39 +3,64 @@ spot <- read.csv("spotify.csv")
 names(spot)
 attach(spot)
 
-summary(lm(in_apple_charts~in_spotify_charts))
+late_release <- released_year[released_year>2010] + 0.5
+hist(late_release)
 
-quit()
+colors <- c("red", "blue")
+
+bhist <- hist(bpm)
+
+bpm_group <- cut(bpm, bhist$breaks)
+print(bpm_group)
+levels(bpm_group) <- bhist$mids
+bpm_mid <- as.numeric(bpm_group)
+
+bpm_mode_table <- table(mode, bpm_group)
+
+print(bpm_mode_table)
+
+barplot(bpm_mode_table, 
+        beside = FALSE, 
+        col = colors, 
+        ylab = "Number of Songs", 
+        xlab = "BPM", 
+		  ylim = c(0, 140),
+        main = "Distribution of BPM by Mode"
+
+)
+
+
+summary(lm(in_apple_charts~in_spotify_charts))
 
 mtab <- table(released_month)
 month <- as.numeric(names(mtab))
 monthly_releases <- as.numeric(mtab)
+
+print(data.frame(month, monthly_releases))
+
 plot(
 	month, monthly_releases
-	, type="o"
+	, type="b"
+	, ylim = c(0, max(monthly_releases))
 )
 
-boxplot(liveness_percent ~ released_month)
+boxplot(energy_percent ~ released_month)
 
 plot(
 	valence_percent, danceability_percent
 )
 
-hist(bpm)
-
-quit()
 
 maxStreams <- max(streams, na.rm=TRUE)
 print(maxStreams)
 
 plot(
 	in_spotify_charts, streams, col="darkblue"
-	, log="xy"
+	## , log="xy"
 	, ylim = c(1e7, maxStreams)
 )
 points(in_apple_charts, streams, col="violetred1")
 
-quit()
 
 energy_ratio <- energy_percent/bpm
 

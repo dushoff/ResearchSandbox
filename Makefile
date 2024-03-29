@@ -25,6 +25,8 @@ tvalues.Rout: tvalues.R
 
 sunMirror.Rout: sunMirror.R
 
+glassTriangle.Rout: glassTriangle.R
+
 ## teacherPlots.R
 ## spotify.csv
 
@@ -32,6 +34,18 @@ jdPlots.Rout: spotify.csv jdPlots.R
 ggMusic.Rout: ggMusic.R spotify.csv
 zMusic.Rout: zMusic.R spotify.csv
 220.Rout: 220.R
+Q3.Rout: Q3.R
+
+focus.Rout: focus.R
+
+## Optics
+Sources += focus.md
+
+######################################################################
+
+## clmm testing
+
+ordinal.Rout: ordinal.R
 
 ######################################################################
 
