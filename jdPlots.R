@@ -8,7 +8,6 @@ summary(lm(in_apple_charts~in_spotify_charts))
 quit()
 
 mtab <- table(released_month)
-print(mtab)
 month <- as.numeric(names(mtab))
 monthly_releases <- as.numeric(mtab)
 plot(
