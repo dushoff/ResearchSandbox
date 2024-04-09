@@ -17,6 +17,8 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+circular.Rout: circular.R
+
 gradeCalc.Rout: gradeCalc.R
 
 ##
