@@ -2,37 +2,36 @@ library(rhandsontable)
 library(shiny)
 library(dplyr)
 
-gradeTable <- function(){
-	DF <- data.frame(
-		name = "<name>"
-		, weight = 0
-		, score = 0
-	)
+gradeTable <- function(tab=NULL){
+	if(is.null(tab)){
+		tab <- data.frame(
+			name = "<name>"
+			, weight = 0
+			, score = 0
+		)
+	}
 	ui <- shinyUI(fluidPage(
 
-		titlePanel("Edit and save a table"),
+		titlePanel("Grade calculator"),
 		sidebarLayout(
 			sidebarPanel(
 				helpText("Right-click on the table to delete/insert rows" 
 					, "Double-click on a cell to edit"
 				)
 
-				, wellPanel(
-					h3("Calculate"), 
-					actionButton("Calculate", "Calculate grade")
-				)				
+				, wellPanel(actionButton("Calculate", "Calculate grade"))
 				, br()
-				, wellPanel(
-					h3("Save"), 
-					actionButton("save", "Save table")
-				)				
+				, wellPanel(NULL
+					, numericInput("goal", "goal", 90)
+					, actionButton("Project", "Project")
+				)
+			)
 
-			),
+			, mainPanel(
 
-			mainPanel(
-
-				rHandsontableOutput("hot")
-
+				rHandsontableOutput("tab")
+				, br()
+				, rHandsontableOutput("project")
 			)
 		)
 	))
@@ -43,32 +42,39 @@ gradeTable <- function(){
 
 		## Handsontable
 		observe({
-			if (!is.null(input$hot)) {
-				DF = hot_to_r(input$hot)
+			if (!is.null(input$tab)) {
+				tab = hot_to_r(input$tab)
 			} else {
-				if (is.null(values[["DF"]]))
-					DF <- DF
+				if (is.null(values[["tab"]]))
+					tab <- tab
 				else
-					DF <- values[["DF"]]
+					tab <- values[["tab"]]
 			}
-			values[["DF"]] <- DF
+			values[["tab"]] <- tab
 		})
 
-		output$hot <- renderRHandsontable({
-			DF <- values[["DF"]]
-			if (!is.null(DF))
-				rhandsontable(DF,  stretchH = "all")
+		output$tab <- renderRHandsontable({
+			tab <- values[["tab"]]
+			if (!is.null(tab))
+				rhandsontable(tab,  stretchH = "all")
 		})
 
-		## Save 
-		observeEvent(input$save, {
-			finalDF <- isolate(values[["DF"]])
-			saveRDS(finalDF, file=file.path(outdir, sprintf("%s.rds", outfilename)))
+		output$project <- renderRHandsontable({
+			proj <- values[["proj"]]
+			if (!is.null(proj))
+				rhandsontable(proj,  stretchH = "all")
 		})
 
 		observeEvent(input$Calculate, {
-			finalDF <- (isolate(values[["DF"]]) |> gradeCalc())
-			values[["DF"]] <- finalDF
+			final <- (isolate(values[["tab"]]) |> gradeCalc())
+			values[["tab"]] <- final
+		})
+
+		observeEvent(input$Project, {
+			goal <- input$goal
+			tab <- isolate(values[["tab"]])
+			final <- projectGrade(goal, tab)
+			values[["proj"]] <- final
 		})
 
 	})
@@ -79,15 +85,40 @@ gradeTable <- function(){
 }
 
 gradeCalc <- function(df){
-	fin <- df |> filter(!is.na(points)) 
+	df <- df |> filter(name != "Average") 
+	fin <- df |> filter(!is.na(score)) 
 	tot <- (fin 
 		|> mutate(points = weight*score)
-		|> summarize(list(weight = sum(weight)
+		|> summarize(weight = sum(weight)
 			, points = sum(points)
-		))
-		|> transmute(name="Final", score=points, weight=weight)
+		)
+		|> transmute(name="Average", weight=weight, score=points/weight)
 	)
-	return(bind_rows(fin, tot))
+	return(bind_rows(df, tot))
 }
+
+projectGrade <- function(goal, df){
+	curr <- (df
+		|> gradeCalc()
+		|> filter(name == "Average") 
+	)
+	available <- (df
+		|> filter(is.na(score))
+		|> summarize(weight=sum(weight))
+		|> pull(weight)
+	)
+	if (available <= 0) return(data.frame(note="No weight available"))
+	req <- (goal*(curr$weight + available) - curr$weight*curr$score)/available
+	return(df
+		|> mutate(score = ifelse(is.na(score), req, score))
+		|> gradeCalc()
+	)
+}
+
+d <- data.frame(
+	name = as.factor(1:4)
+	, weight = 1:4
+	, score = c(1:3, NA)
+)
 
 gradeTable()
