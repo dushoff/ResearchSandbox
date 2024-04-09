@@ -21,6 +21,11 @@ vim_session: bash -cl "vmt"
 gradeCalc.Rout: gradeCalc.R 
 
 deploy.Rout: deploy.R
+circular.Rout: circular.R
+
+gradeCalc.Rout: gradeCalc.R
+
+Ignore += rsconnect
 
 ##
 
