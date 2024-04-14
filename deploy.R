@@ -1,2 +1,3 @@
 library(rsconnect)
-rsconnect::deployApp('gradeCalc.R')
+## Get token from exons.txt
+rsconnect::deployApp('gradeCalc/')

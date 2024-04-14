@@ -18,12 +18,14 @@ vim_session: bash -cl "vmt"
 ######################################################################
 
 ## => gradeCalc/
-gradeCalc.Rout: gradeCalc.R 
+
+Ignore += rsconnect
+gradeCalc.Rout: gradeCalc/app.R 
+	$(pipeR)
 
 deploy.Rout: deploy.R
-circular.Rout: circular.R
 
-gradeCalc.Rout: gradeCalc.R
+circular.Rout: circular.R
 
 Ignore += rsconnect
 
