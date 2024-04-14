@@ -45,6 +45,10 @@ focus.Rout: focus.R
 ## Optics
 Sources += focus.md
 
+## Electric charges
+
+potential.Rout: potential.R
+
 ######################################################################
 
 ## clmm testing
