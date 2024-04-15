@@ -7,6 +7,10 @@ xB <- 13.7
 ## uP <- cA/abs(x-xA) + cB/abs(x-xB)
 ## =  -cA/(x-xA) - cB/(x-xB)
 ## ⇒ =  -cA/(x-xA) = cB/(x-xB)
-## (cB + cA)x = cAxA - cBxB
+## (cB + cA)x = cAxB + cBxA
 
-print((cA * xA - cB * xB)/(cB + cA))
+## Answer
+print(x <- (cA * xB + cB * xA)/(cB + cA))
+
+## Checking
+print(uP <- cA/abs(x-xA) + cB/abs(x-xB))
