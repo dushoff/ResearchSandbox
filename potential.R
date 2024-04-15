@@ -14,3 +14,11 @@ print(x <- (cA * xB + cB * xA)/(cB + cA))
 
 ## Checking
 print(uP <- cA/abs(x-xA) + cB/abs(x-xB))
+
+## m formula
+## I'm using the absolute value of both charges
+## Then I take the value from the formula and treat it as distance from the smaller charge
+
+d <- xB - xA
+bal <- -cA*d/(cB+cA)
+print(x <- xA - bal)
