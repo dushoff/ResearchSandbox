@@ -22,3 +22,10 @@ print(uP <- cA/abs(x-xA) + cB/abs(x-xB))
 d <- xB - xA
 bal <- -cA*d/(cB+cA)
 print(x <- xA - bal)
+
+## x formula (the between from Miriam's sheet)
+bal <- -cA*d/(cB-cA)
+print(bal)
+print(x <- xA + bal)
+
+print(uP <- cA/abs(x-xA) + cB/abs(x-xB))
