@@ -57,6 +57,9 @@ Sources += focus.md
 
 potential.Rout: potential.R
 
+tilde:
+	ls ~
+
 ######################################################################
 
 ## clmm testing
