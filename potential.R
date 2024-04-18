@@ -20,11 +20,13 @@ print(uP <- cA/abs(x-xA) + cB/abs(x-xB))
 ## Then I take the value from the formula and treat it as distance from the smaller charge
 
 d <- xB - xA
-bal <- -cA*d/(cB+cA)
+qA <- abs(cA)
+qB <- abs(cB)
+bal <- qA*d/(qB-qA)
 print(x <- xA - bal)
 
 ## x formula (the between from Miriam's sheet)
-bal <- -cA*d/(cB-cA)
+bal <- qA*d/(qB+qA)
 print(bal)
 print(x <- xA + bal)
 
