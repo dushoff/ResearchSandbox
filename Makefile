@@ -17,6 +17,8 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+rhoCover.Rout: rhoCover.R
+
 ## => gradeCalc/
 
 Ignore += rsconnect
