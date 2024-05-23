@@ -17,6 +17,8 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+rhoCover.Rout: rhoCover.R
+
 ## => gradeCalc/
 
 Ignore += rsconnect
@@ -58,6 +60,9 @@ Sources += focus.md
 ## Electric charges
 
 potential.Rout: potential.R
+
+tilde:
+	ls ~
 
 ######################################################################
 
