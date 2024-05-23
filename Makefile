@@ -31,6 +31,8 @@ Ignore += rsconnect
 
 ##
 
+hist.Rout: hist.R
+
 oranges.Rout: oranges.R
 
 tvalues.Rout: tvalues.R
