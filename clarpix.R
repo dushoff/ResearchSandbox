@@ -16,8 +16,7 @@ span = 2
 
 vget = Vectorize(get)
 
-vr <- (
-)
+vr <- tsvRead()
 
 ## (vr %>% mutate_if(is.character, as.factor) %>% summary)
 

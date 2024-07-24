@@ -106,7 +106,6 @@ iLab1.Rout: iLab1.R
 
 ######################################################################
 
-
 ## Make breakpoints
 
 ## Put a big .csv file in the pipeline, but only use part of it.
@@ -127,9 +126,6 @@ breakCalculate.Rout: breakCalculate.R smallbreak.tsv
 ## breakCalculate: bigbreak.tsv breakCalculate.Rout
 breakCalculate: smallbreak
 	$(MAKE) breakCalculate.Rout
-
-## Deconstructing glm with Roswell 2023 Jul 18 (Tue)
-## Moved to somewhere? Or not??
 
 ######################################################################
 
@@ -177,10 +173,12 @@ clarStrength.Rout: clarStrength.R
 
 clarStrength.md: clarStrength.Rout.pdf
 
-%.clarpix.Rout: clarpix.R %.tsv
+## newsig.clarpix.Rout: clarpix.R newsig.tsv
 %.clarpix.Rout: clarpix.R %.tsv
 	$(pipeR)
 
+## McMaster (Mac) digestive study
+## https://pubmed.ncbi.nlm.nih.gov/36731590/
 Sources += digestive.tsv digestive.md
 digestive.Rout: digestive.R digestive.tsv
 
