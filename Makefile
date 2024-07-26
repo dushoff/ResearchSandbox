@@ -169,11 +169,16 @@ gamShape.Rout: gamShape.R
 
 ######################################################################
 
+## Old version that did trick stuff with Vectorize(get) for no good reason.
 clarStrength.Rout: clarStrength.R
 
+## I guess this was something I meant to develop with md talking to pdf...
 clarStrength.md: clarStrength.Rout.pdf
 
+## Make a clarStrength-like picture from a table (allow different language)
+## clarity.clarpix.Rout: clarpix.R clarity.tsv
 ## newsig.clarpix.Rout: clarpix.R newsig.tsv
+## different.clarpix.Rout: clarpix.R different.tsv
 %.clarpix.Rout: clarpix.R %.tsv
 	$(pipeR)
 
