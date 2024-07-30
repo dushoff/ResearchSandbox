@@ -177,10 +177,10 @@ clarStrength.md: clarStrength.Rout.pdf
 
 ## Make a clarStrength-like picture from a table (allow different language)
 Sources += $(wildcard *.clarpix.tsv)
-## clarity.clarpix.Rout: clarpix.R clarity.tsv
-## newsig.clarpix.Rout: clarpix.R newsig.tsv
-## different.clarpix.Rout: clarpix.R different.tsv
-%.clarpix.Rout: clarpix.R %.tsv
+## clarity.clarpix.Rout: clarpix.R clarity.clarpix.tsv
+## newsig.clarpix.Rout: clarpix.R newsig.clarpix.tsv
+## different.clarpix.Rout: clarpix.R different.clarpix.tsv
+%.clarpix.Rout: clarpix.R %.clarpix.tsv
 	$(pipeR)
 
 ## McMaster (Mac) digestive study
