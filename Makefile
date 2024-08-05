@@ -548,6 +548,16 @@ drop.pdf: drop.rmd
 
 ######################################################################
 
+## Toshi handling time 2024 Aug 05 (Mon)
+
+predExperiment.Rout: predExperiment.R
+
+predMeans.Rout: predMeans.R predExperiment.rda
+
+predBinom.Rout: predBinom.R predExperiment.rda
+
+######################################################################
+
 ### Makestuff
 
 Sources += Makefile
