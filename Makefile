@@ -550,10 +550,13 @@ drop.pdf: drop.rmd
 
 ## Toshi handling time 2024 Aug 05 (Mon)
 
+## Experiment code from Toshi
 predExperiment.Rout: predExperiment.R
 
+## Test the mean formula; works best when handling time is small
 predMeans.Rout: predMeans.R predExperiment.rda
 
+## This looks at _beta_ binomial fitting
 predBinom.Rout: predBinom.R predExperiment.rda
 
 ######################################################################
