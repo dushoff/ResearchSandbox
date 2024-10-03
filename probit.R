@@ -1,16 +1,6 @@
-library(ggplot2)
+library(ggplot2); theme_set(theme_bw())
 
 scale <- 6/pi^2
-lim <- 6
-
-curve(plogis(x), from=-lim, to=lim)
-curve(pnorm(scale*x), from=-lim, to=lim, add=TRUE)
-
-curve(qlogis(plogis(x)), from=-lim, to=lim)
-curve(qlogis(pnorm(scale*x)), from=-lim, to=lim, add=TRUE)
-
-######################################################################
-
 lim <- log(99)
 steps <- 201
 
@@ -24,5 +14,14 @@ df <- data.frame(
 	, dist = rep(c("logit", "probit"), each=steps)
 )
 
-print(ggplot(df)
+base <- (ggplot(df)
+	+ aes(x, p, color=dist)
+	+ geom_line()
 )
+
+print(base)
+
+b <- c(0.005, 0.01, 0.02, 0.05, 0.1, 0.2)
+bb <- c(b, 0.5, 1-b)
+
+print(base + scale_y_continuous(trans="logit" , breaks=bb, minor_breaks=NULL))
