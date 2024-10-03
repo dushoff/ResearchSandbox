@@ -28,6 +28,12 @@ probit.Rout: probit.R
 
 ######################################################################
 
+rtmb.Rout: rtmb.R
+
+######################################################################
+
+rhoCover.Rout: rhoCover.R
+
 ## => gradeCalc/
 
 Ignore += rsconnect
@@ -41,6 +47,8 @@ circular.Rout: circular.R
 Ignore += rsconnect
 
 ##
+
+hist.Rout: hist.R
 
 oranges.Rout: oranges.R
 
@@ -113,7 +121,6 @@ iLab1.Rout: iLab1.R
 
 ######################################################################
 
-
 ## Make breakpoints
 
 ## Put a big .csv file in the pipeline, but only use part of it.
@@ -134,9 +141,6 @@ breakCalculate.Rout: breakCalculate.R smallbreak.tsv
 ## breakCalculate: bigbreak.tsv breakCalculate.Rout
 breakCalculate: smallbreak
 	$(MAKE) breakCalculate.Rout
-
-## Deconstructing glm with Roswell 2023 Jul 18 (Tue)
-## Moved to somewhere? Or not??
 
 ######################################################################
 
@@ -180,14 +184,22 @@ gamShape.Rout: gamShape.R
 
 ######################################################################
 
+## Old version that did trick stuff with Vectorize(get) for no good reason.
 clarStrength.Rout: clarStrength.R
 
+## I guess this was something I meant to develop with md talking to pdf...
 clarStrength.md: clarStrength.Rout.pdf
 
-%.clarpix.Rout: clarpix.R %.tsv
-%.clarpix.Rout: clarpix.R %.tsv
+## Make a clarStrength-like picture from a table (allow different language)
+Sources += $(wildcard *.clarpix.tsv)
+## clarity.clarpix.Rout: clarpix.R clarity.clarpix.tsv
+## newsig.clarpix.Rout: clarpix.R newsig.clarpix.tsv
+## different.clarpix.Rout: clarpix.R different.clarpix.tsv
+%.clarpix.Rout: clarpix.R %.clarpix.tsv
 	$(pipeR)
 
+## McMaster (Mac) digestive study
+## https://pubmed.ncbi.nlm.nih.gov/36731590/
 Sources += digestive.tsv digestive.md
 digestive.Rout: digestive.R digestive.tsv
 
@@ -548,6 +560,19 @@ Ignore += drop.tex
 Sources += drop.rmd
 drop.pdf: drop.rmd
 	Rscript --vanilla -e 'library("rmarkdown"); render("$<", output_file="$@")'
+
+######################################################################
+
+## Toshi handling time 2024 Aug 05 (Mon)
+
+## Experiment code from Toshi
+predExperiment.Rout: predExperiment.R
+
+## Test the mean formula; works best when handling time is small
+predMeans.Rout: predMeans.R predExperiment.rda
+
+## This looks at _beta_ binomial fitting
+predBinom.Rout: predBinom.R predExperiment.rda
 
 ######################################################################
 
