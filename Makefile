@@ -17,6 +17,17 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+## Roswell explorations with BB 
+
+advector.Rout: advector.R
+
+dnbinomX.Rout: dnbinomX.R
+
+## non-Roswell
+probit.Rout: probit.R
+
+######################################################################
+
 ## => gradeCalc/
 
 Ignore += rsconnect
