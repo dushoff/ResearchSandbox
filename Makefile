@@ -6,6 +6,9 @@
 # http://dushoff.github.io/ResearchSandbox/pseudoTest.Rout.pdf
 ## https://github.com/dushoff/ResearchSandbox
 
+## https://github.com/dushoff/ResearchSandbox/blob/main/probit.R
+## https://github.com/dushoff/ResearchSandbox/blob/main/docs/probit.Rout.pdf
+
 current: target
 -include target.mk
 Ignore = target.mk
