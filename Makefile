@@ -19,9 +19,14 @@ vim_session: bash -cl "vmt"
 
 ## Roswell explorations with BB 
 
+sdProfile.Rout: sdProfile.R
+
 advector.Rout: advector.R
 
 dnbinomX.Rout: dnbinomX.R
+
+## nbinom_z.R
+sing_ex.Rout: sing_ex.R
 
 ## non-Roswell
 probit.Rout: probit.R
