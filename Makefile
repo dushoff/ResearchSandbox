@@ -25,6 +25,7 @@ vim_session: bash -cl "vmt"
 ## sd based profiles
 sdProfile.Rout: sdProfile.R
 sing_ex.Rout: sing_ex.R
+dn.Rout: dn.R
 
 advector.Rout: advector.R
 
