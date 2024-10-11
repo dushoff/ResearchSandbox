@@ -2,9 +2,12 @@
 
 # http://dushoff.github.io/ResearchSandbox/clarStrength.Rout.pdf
 # http://dushoff.github.io/ResearchSandbox/digestive.Rout.pdf
+# http://dushoff.github.io/ResearchSandbox/sdProfile.Rout.pdf
 # http://dushoff.github.io/ResearchSandbox/pseudoTest.Rout.pdf
-# http://dushoff.github.io/sandbox/
 ## https://github.com/dushoff/ResearchSandbox
+
+## https://github.com/dushoff/ResearchSandbox/blob/main/probit.R
+## https://github.com/dushoff/ResearchSandbox/blob/main/docs/probit.Rout.pdf
 
 current: target
 -include target.mk
@@ -23,14 +26,16 @@ sculpt.Rout: sculpt.R
 
 ## Roswell explorations with BB 
 
+## sd based profiles
 sdProfile.Rout: sdProfile.R
+sing_ex.Rout: sing_ex.R
+dn.Rout: dn.R
 
 advector.Rout: advector.R
 
 dnbinomX.Rout: dnbinomX.R
 
 ## nbinom_z.R
-sing_ex.Rout: sing_ex.R
 
 ## non-Roswell
 probit.Rout: probit.R

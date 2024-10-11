@@ -3,7 +3,7 @@ ll <- function(V){
 }
 
 curve(ll(x)
-	, from=-1, to=1
+	## , from=-1, to=1
 	, xlab = "V", ylab="ll"
 )
 
