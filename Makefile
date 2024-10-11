@@ -17,6 +17,10 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+## Sculpting
+
+sculpt.Rout: sculpt.R
+
 ## Roswell explorations with BB 
 
 sdProfile.Rout: sdProfile.R
