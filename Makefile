@@ -20,7 +20,7 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
-## Sculpting
+## Sculpting (MOVED to epiExplore)
 
 sculpt.Rout: sculpt.R
 
