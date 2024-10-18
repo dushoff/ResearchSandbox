@@ -20,6 +20,10 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+## Bolker recursion
+
+bolkerRecursion.Rout: bolkerRecursion.R
+
 ## Sculpting (MOVED to epiExplore)
 
 sculpt.Rout: sculpt.R
