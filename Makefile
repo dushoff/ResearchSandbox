@@ -20,6 +20,9 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+## 
+semipar.Rout: semipar.R
+
 ## Bolker recursion
 
 bolkerRecursion.Rout: bolkerRecursion.R
