@@ -13,16 +13,18 @@ current: target
 -include target.mk
 Ignore = target.mk
 
--include makestuff/perl.def
 # -include makestuff/python.def
 
 vim_session: bash -cl "vmt"
 
 ######################################################################
 
+-include makestuff/perl.def
+Sources += $(wildcard *.pl)
+Ignore += *.out
+
 ## Squaring the polygon for OEIS
 
-## Ignore += polySquare.out
 polySquare.out: polySquare.pl
 	$(PUSH)
 
