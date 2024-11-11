@@ -20,6 +20,11 @@ vim_session: bash -cl "vmt"
 
 ######################################################################
 
+## Squaring the polygon for OEIS
+
+polySquare.out: polySquare.pl
+	$(PUSH)
+
 ## Bolker recursion
 
 bolkerRecursion.Rout: bolkerRecursion.R
