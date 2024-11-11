@@ -13,8 +13,8 @@ current: target
 -include target.mk
 Ignore = target.mk
 
-# -include makestuff/perl.def
--include makestuff/python.def
+-include makestuff/perl.def
+# -include makestuff/python.def
 
 vim_session: bash -cl "vmt"
 
@@ -22,8 +22,12 @@ vim_session: bash -cl "vmt"
 
 ## Squaring the polygon for OEIS
 
+## Ignore += polySquare.out
 polySquare.out: polySquare.pl
 	$(PUSH)
+
+## This is Ben showing me spline bases
+semipar.Rout: semipar.R
 
 ## Bolker recursion
 
