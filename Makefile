@@ -23,6 +23,20 @@ vim_session: bash -cl "vmt"
 Sources += $(wildcard *.pl)
 Ignore += *.out
 
+######################################################################
+
+## Parallel exponential routes
+
+parExp.Rout: parExp.R
+
+######################################################################
+
+## Odds and hazards
+
+ohComp.Rout: ohComp.R
+
+######################################################################
+
 ## Squaring the polygon for OEIS
 
 polySquare.out: polySquare.pl
@@ -622,7 +636,8 @@ makestuff/Makefile:
 -include makestuff/pipeR.mk
 -include makestuff/chains.mk
 -include makestuff/pandoc.mk
--include makestuff/texi.mk
+-include makestuff/pdfpages.mk
+-include makestuff/texj.mk
 
 -include makestuff/git.mk
 -include makestuff/visual.mk
