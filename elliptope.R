@@ -1,4 +1,5 @@
 n <- 6
+tri <- n*(n-1)/2
 mult <- 0.995
 
 symMat <- function(x, n, mult=1) {
@@ -12,12 +13,12 @@ symDet <- function(x, n, mult=1){
 	return(det(symMat(x, n, mult)))
 }
 
-corners <- (replicate(n*(n-1)/2, c(-1,1), simplify = FALSE)
+corners <- (replicate(tri, c(-1,1), simplify = FALSE)
 	|> do.call(what = expand.grid)
 )
 
 det <- apply(corners, 1, \(x) symDet(unlist(x), n=n, mult=mult))
-plus <- apply(corners, 1, \(x) (n+sum(unlist(x)))/2)
+plus <- apply(corners, 1, \(x) (tri+sum(unlist(x)))/2)
 
 print(data.frame(det, plus))
 
@@ -26,5 +27,9 @@ sum(det>0)
 sum(det>1)
 
 for (w in which(det>1)){
+	print(symMat(unlist(corners[w, ]), n))
+}
+
+for (w in which(det>0 & det<1)){
 	print(symMat(unlist(corners[w, ]), n))
 }
