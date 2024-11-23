@@ -1,4 +1,4 @@
-n <- 6
+n <- 5
 tri <- n*(n-1)/2
 mult <- 0.995
 
@@ -13,12 +13,21 @@ symDet <- function(x, n, mult=1){
 	return(det(symMat(x, n, mult)))
 }
 
+symEv <- function(x, n, mult=1){
+	return(eigen(symMat(x, n, mult))$values)
+}
+
 corners <- (replicate(tri, c(-1,1), simplify = FALSE)
 	|> do.call(what = expand.grid)
 )
 
+ev <- apply(corners, 1, \(x) symEv(unlist(x), n=n, mult=mult))
 det <- apply(corners, 1, \(x) symDet(unlist(x), n=n, mult=mult))
 plus <- apply(corners, 1, \(x) (tri+sum(unlist(x)))/2)
+
+evframe <- as.data.frame(t(ev))
+print(evframe[order(evframe[[5]]), ] |> unique())
+quit()
 
 print(data.frame(det, plus))
 
