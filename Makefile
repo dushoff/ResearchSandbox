@@ -28,6 +28,8 @@ Ignore += *.out
 ## 4, 36, 496
 elliptope.Rout: elliptope.R
 
+nestRows.Rout: nestRows.R
+
 ######################################################################
 
 ## Odds and hazards

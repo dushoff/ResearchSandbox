@@ -1,6 +1,8 @@
-n <- 5
+n <- 4
 tri <- n*(n-1)/2
 mult <- 0.995
+mult <- 1
+eps <- 1e-6
 
 symMat <- function(x, n, mult=1) {
 	M <- diag(n)
@@ -21,13 +23,16 @@ corners <- (replicate(tri, c(-1,1), simplify = FALSE)
 	|> do.call(what = expand.grid)
 )
 
-ev <- apply(corners, 1, \(x) symEv(unlist(x), n=n, mult=mult))
 det <- apply(corners, 1, \(x) symDet(unlist(x), n=n, mult=mult))
 plus <- apply(corners, 1, \(x) (tri+sum(unlist(x)))/2)
-
+ev <- apply(corners, 1, \(x) symEv(unlist(x), n=n, mult=mult))
 evframe <- as.data.frame(t(ev))
-print(evframe[order(evframe[[5]]), ] |> unique())
+print(evframe[[n]])
+
+print(corners[abs(evframe[[n]])<eps, ])
 quit()
+
+print(evframe[order(evframe[[n]]), ] |> unique())
 
 print(data.frame(det, plus))
 
