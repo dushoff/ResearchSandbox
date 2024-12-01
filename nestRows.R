@@ -14,6 +14,12 @@ nestRows <- function(v, lev){
 	return(bind_rows(l))
 }
 
-triProd
+triProd <- function(v){
+	w <- v
+	for (i in 2:length(v))
+		w <- c(w, v[[i-1]]*v[i:length(v)])
+	return(w)
+}
 
-## nestRows(0:2, 4)
+
+r <- nestRows(c(-1, 1), 4)
