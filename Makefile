@@ -26,6 +26,7 @@ Ignore += *.out
 ######################################################################
 
 ## expo/geo for Roswell
+## There seems to be no perfect answer to the problem of discretization plus the boundary at zero.
 deviates.Rout: deviates.R
 
 ######################################################################
