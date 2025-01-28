@@ -4,7 +4,9 @@ compPlot <- function(mu, nr, nbreaks){
 	t <- paste("mean =", mu)
 	g <- rgeom(nr, prob=1/(mu+1))
 	xm <- max(g)
+	cbreaks <- c(0, seq(1/2, xm+1/2))
 	cbreaks <- seq(0, xm, length.out=1+nbreaks)
+
 	p <- pexp(cbreaks, rate=1/mu)
 	cw <- diff(cbreaks)
 	cd <- diff(p)/cw
@@ -18,6 +20,7 @@ compPlot <- function(mu, nr, nbreaks){
 	))
 
 	dbreaks <- seq(-1/2, xm+1/2)
+	dbreaks <- c(-1/4, 1/4, seq(1/2, xm+1/2))
 	h <- hist(g, prob=TRUE, breaks = dbreaks, ylim=c(0, max(cd)), main=t)
 	lines(cmid, cd)
 
