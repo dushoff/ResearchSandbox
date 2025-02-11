@@ -29,6 +29,9 @@ Ignore += *.out
 ## There seems to be no perfect answer to the problem of discretization plus the boundary at zero.
 deviates.Rout: deviates.R
 
+## Playing with mixture distributions
+addingVariances.Rout: addingVariances.R
+
 ######################################################################
 
 ## 4, 36, 496
