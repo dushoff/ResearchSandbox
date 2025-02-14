@@ -32,6 +32,9 @@ deviates.Rout: deviates.R
 ## Playing with mixture distributions
 addingVariances.Rout: addingVariances.R
 
+## hazard example
+hazards.Rout: hazards.R
+
 ######################################################################
 
 ## 4, 36, 496
