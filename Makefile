@@ -269,7 +269,7 @@ resources:
 
 ######################################################################
 
-alldirs += trains
+Ignore += trains
 
 ## Bicko pages glitch
 
