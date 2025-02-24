@@ -269,6 +269,7 @@ resources:
 
 ######################################################################
 
+## Orphan stuff here, related to Ningrui's project maybe?
 Ignore += trains
 
 ## Bicko pages glitch
