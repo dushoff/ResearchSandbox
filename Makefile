@@ -25,7 +25,18 @@ Ignore += *.out
 
 ######################################################################
 
+## Calculate the 6, 5, 6, 11 pattern on weekday gaps
 weekgaps.Rout: weekgaps.R
+
+## expo/geo for Roswell
+## There seems to be no perfect answer to the problem of discretization plus the boundary at zero.
+deviates.Rout: deviates.R
+
+## Playing with mixture distributions
+addingVariances.Rout: addingVariances.R
+
+## hazard example
+hazards.Rout: hazards.R
 
 ######################################################################
 
@@ -261,7 +272,8 @@ resources:
 
 ######################################################################
 
-alldirs += trains
+## Orphan stuff here, related to Ningrui's project maybe?
+Ignore += trains
 
 ## Bicko pages glitch
 
