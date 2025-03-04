@@ -25,6 +25,11 @@ Ignore += *.out
 
 ######################################################################
 
+## Slater flattening phenomenon
+under.Rout: under.R
+
+######################################################################
+
 ## Calculate the 6, 5, 6, 11 pattern on weekday gaps
 weekgaps.Rout: weekgaps.R
 
