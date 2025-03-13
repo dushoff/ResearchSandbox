@@ -25,7 +25,15 @@ Ignore += *.out
 
 ######################################################################
 
+## Li stochastic weirdness
+
+rsStoch.Rout: rsStoch.R rsStoch.rds
+
+######################################################################
+
 ## Slater flattening phenomenon
+## Binomial sampling from two populations sharply flattens their relationship
+## Stats seminar 2025 Mar
 under.Rout: under.R
 
 ######################################################################
