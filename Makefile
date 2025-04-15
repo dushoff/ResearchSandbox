@@ -30,6 +30,22 @@ Ignore += *.out
 
 ######################################################################
 
+## Li stochastic weirdness
+
+rsStoch.Rout: rsStoch.R rsStoch.rds
+
+######################################################################
+
+## Slater flattening phenomenon
+## Binomial sampling from two populations sharply flattens their relationship
+## Stats seminar 2025 Mar
+under.Rout: under.R
+
+######################################################################
+
+## Calculate the 6, 5, 6, 11 pattern on weekday gaps
+weekgaps.Rout: weekgaps.R
+
 ## expo/geo for Roswell
 ## There seems to be no perfect answer to the problem of discretization plus the boundary at zero.
 deviates.Rout: deviates.R
