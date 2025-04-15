@@ -34,8 +34,6 @@ HH <- H%*%t(H)
 ## It may be computationally easier to construct the pseudo-inverse directly?
 ## Not sure the disadvantages of dropping inverse generator
 attach(svd(G))
-
-## more direct pseudoinverse 
 Ap <- v%*%diag(1/d^2)%*%t(v)
 
 ## pseudoinverses are the same

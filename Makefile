@@ -27,6 +27,7 @@ Ignore += *.out
 
 ## Playing with matrix manipulation!
 ## rankReduce.Rout: rankReduce.R rankReduce.md
+## invGen.Rout: invGen.R
 
 ######################################################################
 
