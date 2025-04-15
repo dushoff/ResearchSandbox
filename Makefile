@@ -147,6 +147,7 @@ Q3.Rout: Q3.R
 focus.Rout: focus.R
 
 ## Optics
+Sources += $(wildcard *.md)
 Sources += focus.md
 
 ## Electric charges
