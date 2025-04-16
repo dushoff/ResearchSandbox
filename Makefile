@@ -26,8 +26,8 @@ Ignore += *.out
 ######################################################################
 
 ## Playing with matrix manipulation!
-## rankReduce.Rout: rankReduce.R rankReduce.md
-## rankReduce.html: rankReduce.md
+## rankReduce.Rout: rankReduce.R
+## git rm rankReduce.md ## Moved to notebook
 ## invGen.Rout: invGen.R
 
 ######################################################################
