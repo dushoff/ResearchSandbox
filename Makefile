@@ -26,9 +26,11 @@ Ignore += *.out
 ######################################################################
 
 ## Playing with matrix manipulation!
-## rankReduce.Rout: rankReduce.R
+## rankReduce.Rout: rankReduce.R rankReduce.md
+## piTest.Rout: piTest.R
 ## git rm rankReduce.md ## Moved to notebook
 ## invGen.Rout: invGen.R
+## rr_ex.Rout: rr_ex.R
 
 ######################################################################
 

@@ -20,7 +20,7 @@ asymm <- function(m){
 }
 
 ## Using c>r to match textbook conventions
-G <- randMat(seed=3, r=2, c=6)
+G <- randMat(seed=11, r=3, c=100)
 
 ## A is the bigger matrix
 A <- t(G)%*%(G)
@@ -50,12 +50,12 @@ idem(Ap, A)
 all.equal(H, MASS::ginv(G))
 
 pinv <- function(G) {
-    t(G)%*%solve(tcrossprod(G))
+    tcrossprod(t(G)%*%solve(tcrossprod(G)))
 }
 
 all.equal(pinv(G), MASS::ginv(G))
 
-benchmark(pinv(G), MASS::ginv(G), replications = 10000)
+benchmark(pinv(G), MASS::ginv(G), replications = 1000)
 ## pinv() is a bit faster (45%, might get better with scaling?)
 ## _and_ uses only matrix operations that (R)TMB probably knows about
 ## already ...
