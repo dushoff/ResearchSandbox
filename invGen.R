@@ -20,4 +20,3 @@ GG <- invGen(G)
 GGG <- invGen(GG)
 
 size(G-GGG)
-size(G-GG)
