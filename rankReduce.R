@@ -10,7 +10,7 @@ size <- function(m){
 	return(sum(m^2))
 }
 
-idem <- function(u, v){
+mapTest <- function(u, v){
 	return(size(u%*%v%*%u - u))
 }
 
@@ -25,23 +25,23 @@ G <- randMat(seed=3, r=2, c=6)
 A <- t(G)%*%(G)
 B <- (G)%*%t(G)
 
-## Construct a putative inverse generator
+## Construct an inverse generator
 H <- t(G)%*%solve(B)
 
-## And a putative pseudo-inverse
+## And a pseudo-inverse
 HH <- H%*%t(H)
 
-## It may be computationally easier to construct the pseudo-inverse directly?
-## Not sure the disadvantages of dropping inverse generator
+## It is also possible to construct the pseudo-inverse directly from the svd of the generator.
+## Not sure the what the advantages of each approach are
 attach(svd(G))
 Ap <- v%*%diag(1/d^2)%*%t(v)
 
 ## pseudoinverses are the same
 size(Ap-HH)
 
-## pseudoinverses are pseudoinverses
+## pseudoinverses are pseudoinverses (two symmetry conditions, two mapping conditions)
 asymm(Ap%*%A)
 asymm(A%*%Ap)
-idem(A, Ap)
-idem(Ap, A)
+mapTest(A, Ap)
+mapTest(Ap, A)
 
