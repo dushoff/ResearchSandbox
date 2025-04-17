@@ -58,7 +58,7 @@ logdet <- ADjoint(
 )
 
 set.seed(101)
-ngrp <- 30
+ngrp <- 23
 nlev <- 30
 d <- 3
 ntheta <- nlev*d - choose(d,2)
@@ -75,7 +75,7 @@ dd$y <- simulate_new(RHSForm(form, as.form = TRUE),
                                       betadisp = -1))[[1]]
 
 fitfun <- function(dd) {
-    glmmTMB(y ~ 1 + rr(f | g, d = d), 
+    glmmTMB(form, 
             data = dd, 
             family = gaussian,
             control = glmmTMBControl(optCtrl = list(iter.max=1000,
