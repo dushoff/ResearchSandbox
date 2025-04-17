@@ -11,7 +11,7 @@ size <- function(m){
 	return(sum(m^2))
 }
 
-idem <- function(u, v){
+mapTest <- function(u, v){
 	return(size(u%*%v%*%u - u))
 }
 
@@ -26,10 +26,10 @@ G <- randMat(seed=11, r=3, c=100)
 A <- t(G)%*%(G)
 B <- (G)%*%t(G)
 
-## Construct a putative inverse generator
+## Construct an inverse generator
 H <- t(G)%*%solve(B)
 
-## And a putative pseudo-inverse
+## And a pseudo-inverse
 HH <- H%*%t(H)
 
 ## It may be computationally easier to construct the pseudo-inverse directly?
@@ -41,11 +41,11 @@ Ap <- with(svd(G), {
 ## pseudoinverses are the same
 size(Ap-HH)
 
-## pseudoinverses are pseudoinverses
+## pseudoinverses are pseudoinverses (two symmetry conditions, two mapping conditions)
 asymm(Ap%*%A)
 asymm(A%*%Ap)
-idem(A, Ap)
-idem(Ap, A)
+mapTest(A, Ap)
+mapTest(Ap, A)
 
 all.equal(H, MASS::ginv(G))
 
