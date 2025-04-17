@@ -1,3 +1,4 @@
+library(rbenchmark)
 
 randMat <- function(seed, r, c){
 	set.seed(seed)
@@ -19,7 +20,7 @@ asymm <- function(m){
 }
 
 ## Using c>r to match textbook conventions
-G <- randMat(seed=3, r=2, c=6)
+G <- randMat(seed=11, r=3, c=100)
 
 ## A is the bigger matrix
 A <- t(G)%*%(G)
@@ -31,10 +32,11 @@ H <- t(G)%*%solve(B)
 ## And a pseudo-inverse
 HH <- H%*%t(H)
 
-## It is also possible to construct the pseudo-inverse directly from the svd of the generator.
-## Not sure the what the advantages of each approach are
-attach(svd(G))
-Ap <- v%*%diag(1/d^2)%*%t(v)
+## It may be computationally easier to construct the pseudo-inverse directly?
+## Not sure the disadvantages of dropping inverse generator
+Ap <- with(svd(G), {
+    v%*%diag(1/d^2)%*%t(v)
+})
 
 ## pseudoinverses are the same
 size(Ap-HH)
@@ -44,4 +46,17 @@ asymm(Ap%*%A)
 asymm(A%*%Ap)
 mapTest(A, Ap)
 mapTest(Ap, A)
+
+all.equal(H, MASS::ginv(G))
+
+pinv <- function(G) {
+    tcrossprod(t(G)%*%solve(tcrossprod(G)))
+}
+
+all.equal(pinv(G), MASS::ginv(G))
+
+benchmark(pinv(G), MASS::ginv(G), replications = 1000)
+## pinv() is a bit faster (45%, might get better with scaling?)
+## _and_ uses only matrix operations that (R)TMB probably knows about
+## already ...
 

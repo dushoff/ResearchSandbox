@@ -20,5 +20,8 @@ GG <- invGen(G)
 GGG <- invGen(GG)
 
 size(G-GGG)
+<<<<<<< HEAD
 print(G)
 print(GG)
+=======
+>>>>>>> 28d70068f83797def1dccfc9da4321dc42c67c5f
