@@ -34,6 +34,12 @@ Ignore += *.out
 
 ######################################################################
 
+## Rowan curve corrections
+
+rcc.Rout: rcc.R
+
+######################################################################
+
 ## Li stochastic weirdness
 
 rsStoch.Rout: rsStoch.R rsStoch.rds
