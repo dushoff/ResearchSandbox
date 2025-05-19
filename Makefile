@@ -25,6 +25,11 @@ Ignore += *.out
 
 ######################################################################
 
+## New distribution emailed from Bolker! 2025 May 16 (Fri)
+betaGeometric.Rout: betaGeometric.R
+
+######################################################################
+
 ## expo/geo for Roswell
 ## There seems to be no perfect answer to the problem of discretization plus the boundary at zero.
 deviates.Rout: deviates.R
