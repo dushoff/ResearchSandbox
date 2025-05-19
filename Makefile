@@ -30,6 +30,37 @@ betaGeometric.Rout: betaGeometric.R
 
 ######################################################################
 
+## Playing with matrix manipulation!
+## rankReduce.Rout: rankReduce.R rankReduce.md
+## piTest.Rout: piTest.R
+## git rm rankReduce.md ## Moved to notebook
+## invGen.Rout: invGen.R
+## rr_ex.Rout: rr_ex.R
+
+######################################################################
+
+## Rowan curve corrections
+
+rcc.Rout: rcc.R
+
+######################################################################
+
+## Li stochastic weirdness
+
+rsStoch.Rout: rsStoch.R rsStoch.rds
+
+######################################################################
+
+## Slater flattening phenomenon
+## Binomial sampling from two populations sharply flattens their relationship
+## Stats seminar 2025 Mar
+under.Rout: under.R
+
+######################################################################
+
+## Calculate the 6, 5, 6, 11 pattern on weekday gaps
+weekgaps.Rout: weekgaps.R
+
 ## expo/geo for Roswell
 ## There seems to be no perfect answer to the problem of discretization plus the boundary at zero.
 deviates.Rout: deviates.R
@@ -131,6 +162,7 @@ Q3.Rout: Q3.R
 focus.Rout: focus.R
 
 ## Optics
+Sources += $(wildcard *.md)
 Sources += focus.md
 
 ## Electric charges
@@ -274,7 +306,8 @@ resources:
 
 ######################################################################
 
-alldirs += trains
+## Orphan stuff here, related to Ningrui's project maybe?
+Ignore += trains
 
 ## Bicko pages glitch
 
