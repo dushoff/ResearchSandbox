@@ -38,6 +38,26 @@ idem_update: idem.repeat.jpg idem.jpg
 	$(MAKE) $<
 	diff $^
 
+## New distribution emailed from Bolker! 2025 May 16 (Fri)
+betaGeometric.Rout: betaGeometric.R
+
+######################################################################
+
+## Playing with matrix manipulation!
+## rankReduce.Rout: rankReduce.R rankReduce.md
+## piTest.Rout: piTest.R
+## git rm rankReduce.md ## Moved to notebook
+## invGen.Rout: invGen.R
+## rr_ex.Rout: rr_ex.R
+
+######################################################################
+
+## Rowan curve corrections
+
+rcc.Rout: rcc.R
+
+######################################################################
+
 ## Li stochastic weirdness
 
 rsStoch.Rout: rsStoch.R rsStoch.rds
@@ -155,6 +175,7 @@ Q3.Rout: Q3.R
 focus.Rout: focus.R
 
 ## Optics
+Sources += $(wildcard *.md)
 Sources += focus.md
 
 ## Electric charges
