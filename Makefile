@@ -25,6 +25,19 @@ Ignore += *.out
 
 ######################################################################
 
+Ignore += idem*
+
+idem.jpg: idem.png
+	$(convert)
+
+idem.repeat.jpg: idem.jpg
+	$(convert)
+
+idem_update: idem.repeat.jpg idem.jpg
+	$(MV) $^
+	$(MAKE) $<
+	diff $^
+
 ## Li stochastic weirdness
 
 rsStoch.Rout: rsStoch.R rsStoch.rds
