@@ -41,6 +41,9 @@ idem_update: idem.repeat.jpg idem.jpg
 ## New distribution emailed from Bolker! 2025 May 16 (Fri)
 betaGeometric.Rout: betaGeometric.R
 
+## Picking rooms
+E313.Rout: E313.R
+
 ######################################################################
 
 ## Playing with matrix manipulation!
