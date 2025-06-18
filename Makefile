@@ -300,9 +300,11 @@ clarStrength.Rout: clarStrength.R
 clarStrength.md: clarStrength.Rout.pdf
 
 ## Make a clarStrength-like picture from a table (allow different language)
+## Lakens language is still in notebook (not sure what's going on here with venue) 2025 Jun 18 (Wed)
 Sources += $(wildcard *.clarpix.tsv)
 ## clarity.clarpix.Rout: clarpix.R clarity.clarpix.tsv
 ## newsig.clarpix.Rout: clarpix.R newsig.clarpix.tsv
+## oldsig.clarpix.Rout: clarpix.R oldsig.clarpix.tsv
 ## different.clarpix.Rout: clarpix.R different.clarpix.tsv
 %.clarpix.Rout: clarpix.R %.clarpix.tsv
 	$(pipeR)
