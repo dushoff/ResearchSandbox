@@ -316,6 +316,10 @@ digestive.Rout: digestive.R digestive.tsv
 
 ######################################################################
 
+popMath.pdf: popMath.md
+
+######################################################################
+
 Ignore += README.html Sources += README.md
 
 Ignore += resources resources/%: resources
