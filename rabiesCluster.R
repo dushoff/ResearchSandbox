@@ -1,7 +1,7 @@
 library(dplyr)
 
 rsBeta <- function(n, prob, spread){
-	if (spread==0) return(rep(prob, n))
+	if (spread==0) return(prob)
 	b1 = (1-prob)*spread
 	b2 = prob*spread
 	return(rbeta(n, 1/b1, 1/b2))
@@ -39,13 +39,49 @@ doTrial <- function(
 		|> select(treat, vax, unvax, rabies)
 	)
 
-	est <- glm(rabies/unvax ~ treat, weights=unvax, data=obs, family=binomial())
+	est <- glm(rabies/unvax ~ treat, weights=unvax, data=obs, family=quasibinomial())
 
 	return(exp(confint(est)["treatVax", ]))
 }
 
-print(doTrial(
-	numVillages = 20, medianDogs = 1000, spread = 0.4
-	, vaxPropT = 0.75, vaxPropC = 0.1, vaxSpread = 0.1
-	, rProbT = 0.01, rProbC = 0.05 , rSpread = 1
-))
+replicateTrial <- function(reps
+	, numVillages, medianDogs, spread 
+	, vaxPropT, vaxPropC, vaxSpread 
+	, rProbT, rProbC, rSpread 
+){
+	ints <- replicate(reps, doTrial(numVillages, medianDogs, spread 
+		, vaxPropT, vaxPropC, vaxSpread 
+		, rProbT, rProbC, rSpread 
+	))
+	return(ints 
+		|> t() |> as.data.frame() |> rename(lwr = `2.5 %`, upr = `97.5 %`)
+	)
+}
+
+odds <- function(p) return(p/(1-p))
+checkTrials <- function(reps
+	, numVillages, medianDogs, spread 
+	, vaxPropT, vaxPropC, vaxSpread 
+	, rProbT, rProbC, rSpread 
+){
+	or <- odds(rProbT)/odds(rProbC)
+	## print(c(or=or))
+	return(
+		replicateTrial(reps
+			, numVillages, medianDogs, spread 
+			, vaxPropT, vaxPropC, vaxSpread 
+			, rProbT, rProbC, rSpread 
+		) |> summarize(
+			backwards = mean(lwr>=1)
+			, power = mean(upr<=1)
+			, low = mean(upr<=or)
+			, high = mean(lwr>=or)
+		)
+	)
+}
+
+checkTrials(reps=1000
+	, numVillages = 20, medianDogs = 1000, spread = 0.4
+	, vaxPropT = 0.1, vaxPropC = 0.1, vaxSpread = 0.1
+	, rProbT = 0.01, rProbC = 0.01 , rSpread = 0.4
+) 
