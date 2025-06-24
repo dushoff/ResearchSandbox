@@ -44,8 +44,8 @@ doTrial <- function(
 	)
 
 	est <- glmer(rabies/unvax ~ treat + (1|vill), weights=unvax, data=obs, family=binomial())
-	return(summary(est))
 
+	## return(summary(est))
 	return(exp(confint(est, method="Wald")["treatVax", ]))
 }
 
