@@ -1,4 +1,7 @@
 library(dplyr)
+library(lme4)
+
+set.seed(23)
 
 rsBeta <- function(n, prob, spread){
 	if (spread==0) return(prob)
@@ -37,11 +40,13 @@ doTrial <- function(
 	## Lot of complications could be added here!!
 	obs <- (latent
 		|> select(treat, vax, unvax, rabies)
+		|> mutate(vill = 1:nrow(latent))
 	)
 
-	est <- glm(rabies/unvax ~ treat, weights=unvax, data=obs, family=quasibinomial())
+	est <- glmer(rabies/unvax ~ treat + (1|vill), weights=unvax, data=obs, family=binomial())
+	return(summary(est))
 
-	return(exp(confint(est)["treatVax", ]))
+	return(exp(confint(est, method="Wald")["treatVax", ]))
 }
 
 replicateTrial <- function(reps
@@ -82,6 +87,14 @@ checkTrials <- function(reps
 
 checkTrials(reps=1000
 	, numVillages = 20, medianDogs = 1000, spread = 0.4
-	, vaxPropT = 0.1, vaxPropC = 0.1, vaxSpread = 0.1
+	, vaxPropT = 0.75, vaxPropC = 0.1, vaxSpread = 0.1
+	, rProbT = 0.01, rProbC = 0.01 , rSpread = 0.4
+) 
+
+quit()
+
+doTrial(numVillages = 20
+	, medianDogs = 1000, spread = 0.4
+	, vaxPropT = 0.75, vaxPropC = 0.1, vaxSpread = 0.1
 	, rProbT = 0.01, rProbC = 0.01 , rSpread = 0.4
 ) 
