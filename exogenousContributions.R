@@ -21,7 +21,7 @@ W <- solve(V)
 print(c(R0 = R0 <- lam[[1]]))
 
 ## Construct the vector for the exogenous distribution of interest
-x <- c(1, 0, 0)
+x <- c(1, 0, 0)*sum(v)
 
 ## Construct the projection eigenvector and cross-multiply
 w <- W[1,]
