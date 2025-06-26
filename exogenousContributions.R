@@ -8,17 +8,15 @@ N <- matrix(
 	) , nrow=3, byrow=TRUE
 )
 
-print(e <- eigen(N))
-print(eigen(N[2:3, 2:3]))
+e <- eigen(N)
+print(R0 <- e$values[[1]])
 
 ## The formal R0 (from this matrix) is the same as the endogenous R0 (ignoring exogenous cases)
+print(eigen(N[2:3, 2:3])$values[[1]])
 
 ## Make the decomposition
-lam <- e$values
 V <- e$vectors
 W <- solve(V)
-
-print(c(R0 = R0 <- lam[[1]]))
 
 ## Construct the vector for the exogenous distribution of interest
 x <- c(1, 0, 0)
@@ -31,4 +29,4 @@ rel <- t(w) %*% x
 
 print(c(relative=rel, ng=rel*R0))
 
-## This is the contribution relative to a “typical” case, or the contribution to the next generation measured in typical cases. Or something.
+## This is the contribution relative to a “typical” case, and then the contribution to the next generation measured in typical cases. Or something.
