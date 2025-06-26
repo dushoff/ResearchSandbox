@@ -43,7 +43,8 @@ doTrial <- function(
 		|> mutate(vill = 1:nrow(latent))
 	)
 
-	est <- glmer(rabies/unvax ~ treat + (1|vill), weights=unvax, data=obs, family=binomial())
+	## est <- glmer(rabies/unvax ~ treat + (1|vill), weights=unvax, data=obs, family=binomial())
+	est <- glm(rabies/unvax ~ treat, weights=unvax, data=obs, family=quasibinomial())
 
 	## return(summary(est))
 	return(exp(confint(est, method="Wald")["treatVax", ]))
@@ -88,13 +89,5 @@ checkTrials <- function(reps
 checkTrials(reps=1000
 	, numVillages = 20, medianDogs = 1000, spread = 0.4
 	, vaxPropT = 0.75, vaxPropC = 0.1, vaxSpread = 0.1
-	, rProbT = 0.01, rProbC = 0.01 , rSpread = 0.4
-) 
-
-quit()
-
-doTrial(numVillages = 20
-	, medianDogs = 1000, spread = 0.4
-	, vaxPropT = 0.75, vaxPropC = 0.1, vaxSpread = 0.1
-	, rProbT = 0.01, rProbC = 0.01 , rSpread = 0.4
+	, rProbT = 0.01, rProbC = 0.05 , rSpread = 0.2
 ) 
