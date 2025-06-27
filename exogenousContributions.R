@@ -3,7 +3,7 @@
 N <- matrix(
 	c(
 		0, 0.0, 0.0
-		, 1, 0.5, 0.1
+		, 1, 0.5, 0.5
 		, 1, 0.2, 0.5
 	) , nrow=3, byrow=TRUE
 )
@@ -18,15 +18,14 @@ print(eigen(N[2:3, 2:3])$values[[1]])
 V <- e$vectors
 W <- solve(V)
 
-## Construct the vector for the exogenous distribution of interest
-x <- c(1, 0, 0)
+## Select the left and right dominant eigenvectors
+wd <- W[1,]
+vd <- V[,1]
 
-## Construct the projection eigenvector and cross-multiply
-w <- W[1,]
-rel <- t(w) %*% x
 
-## Relative contribution and next-generation contribution of the exogenous case
+## The relative contribution for each class is given by the dominant left eigenvector
+## The right eigenvector has been chosen to have L2 norm of 1, and the left eigenvector to multiply it to 1. We scale so that we see contributions relative to the “typical” distribution with a sum of 1.
+print(rel <- t(wd) * sum(vd) )
 
-print(c(relative=rel, ng=rel*R0))
-
-## This is the contribution relative to a “typical” case, and then the contribution to the next generation measured in typical cases. Or something.
+## We define the next-generation contribution as the relative contribution multiplied by R0. For symmetric cases, this should give confirmable answers
+print(ng<-rel*R0)
