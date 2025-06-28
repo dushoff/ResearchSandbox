@@ -57,6 +57,7 @@ E313.Rout: E313.R
 
 ## With Seth, MMED 2025
 exogenousContributions.Rout: exogenousContributions.R
+contributions.Rout: contributions.R
 
 ## NOT GIVEN due to illness MMED 2025
 rabiesCluster.Rout: rabiesCluster.R
