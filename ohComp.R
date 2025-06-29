@@ -19,6 +19,7 @@ summary(df)
 plot <-(ggplot(df)
 	+ aes(par, prob, color=parameter)
 	+ geom_line()
+	+ scale_color_brewer(palette="Dark2")
 )
 
 print(plot %+% filter(df, parameter=="hazard"))

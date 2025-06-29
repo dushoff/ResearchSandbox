@@ -16,16 +16,24 @@ print(eigen(N[2:3, 2:3])$values[[1]])
 
 ## Make the decomposition
 V <- e$vectors
+
+## The left-eigenvector matrix,
+## which projects the starting vector onto the relevant space,
+## is the inverse of the regular (right) eigenvector matrix
+## the R idiom for inverting a matrix is solve
 W <- solve(V)
 
-## Select the left and right dominant eigenvectors
+## Select the dominant eigenvectors
 wd <- W[1,]
 vd <- V[,1]
 
-
-## The relative contribution for each class is given by the dominant left eigenvector
-## The right eigenvector has been chosen to have L2 norm of 1, and the left eigenvector to multiply it to 1. We scale so that we see contributions relative to the “typical” distribution with a sum of 1.
+## The relative contribution for each class is given by wd
+## vd has L2 norm of 1, vd·wd=1. 
+## Scale so that we see contributions relative to the “typical” distribution with a sum of 1 instead
 print(rel <- t(wd) * sum(vd) )
 
-## We define the next-generation contribution as the relative contribution multiplied by R0. For symmetric cases, this should give confirmable answers
+## Define the next-generation contribution as the relative contribution multiplied by R0. 
+## We can confirm for example, that if all endogenous cases are symmetric,
+## the NG contributions are equal to the naive contributions
+## obtained by summing the number of cases caused.
 print(ng<-rel*R0)
