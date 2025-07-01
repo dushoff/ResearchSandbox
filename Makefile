@@ -120,7 +120,6 @@ polySquare.out: polySquare.pl
 semipar.Rout: semipar.R
 
 ## Bolker recursion
-
 bolkerRecursion.Rout: bolkerRecursion.R
 
 ## Sculpting (MOVED to epiExplore)
