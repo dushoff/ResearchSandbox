@@ -41,6 +41,9 @@ idem_update: idem.repeat.jpg idem.jpg
 ## New distribution emailed from Bolker! 2025 May 16 (Fri)
 betaGeometric.Rout: betaGeometric.R
 
+## Picking rooms
+E313.Rout: E313.R
+
 ######################################################################
 
 ## Playing with matrix manipulation!
@@ -51,6 +54,13 @@ betaGeometric.Rout: betaGeometric.R
 ## rr_ex.Rout: rr_ex.R
 
 ######################################################################
+
+## With Seth, MMED 2025
+exogenousContributions.Rout: exogenousContributions.R
+contributions.Rout: contributions.R
+
+## NOT GIVEN due to illness MMED 2025
+rabiesCluster.Rout: rabiesCluster.R
 
 ######################################################################
 
@@ -110,7 +120,6 @@ polySquare.out: polySquare.pl
 semipar.Rout: semipar.R
 
 ## Bolker recursion
-
 bolkerRecursion.Rout: bolkerRecursion.R
 
 ## Sculpting (MOVED to epiExplore)
@@ -299,9 +308,11 @@ clarStrength.Rout: clarStrength.R
 clarStrength.md: clarStrength.Rout.pdf
 
 ## Make a clarStrength-like picture from a table (allow different language)
+## Lakens language is still in notebook (not sure what's going on here with venue) 2025 Jun 18 (Wed)
 Sources += $(wildcard *.clarpix.tsv)
 ## clarity.clarpix.Rout: clarpix.R clarity.clarpix.tsv
 ## newsig.clarpix.Rout: clarpix.R newsig.clarpix.tsv
+## oldsig.clarpix.Rout: clarpix.R oldsig.clarpix.tsv
 ## different.clarpix.Rout: clarpix.R different.clarpix.tsv
 %.clarpix.Rout: clarpix.R %.clarpix.tsv
 	$(pipeR)
@@ -310,6 +321,11 @@ Sources += $(wildcard *.clarpix.tsv)
 ## https://pubmed.ncbi.nlm.nih.gov/36731590/
 Sources += digestive.tsv digestive.md
 digestive.Rout: digestive.R digestive.tsv
+
+######################################################################
+
+Ignore += popMath.pdf
+popMath.pdf: popMath.md
 
 ######################################################################
 
