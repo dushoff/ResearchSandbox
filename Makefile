@@ -25,6 +25,14 @@ Ignore += *.out
 
 ######################################################################
 
+ss.Rout: ss.R
+
+######################################################################
+
+chiIsGamma.Rout: chiIsGamma.R
+
+######################################################################
+
 Ignore += idem*
 
 idem.jpg: idem.png
@@ -52,6 +60,15 @@ E313.Rout: E313.R
 ## git rm rankReduce.md ## Moved to notebook
 ## invGen.Rout: invGen.R
 ## rr_ex.Rout: rr_ex.R
+
+######################################################################
+
+## With Seth, MMED 2025
+exogenousContributions.Rout: exogenousContributions.R
+contributions.Rout: contributions.R
+
+## NOT GIVEN due to illness MMED 2025
+rabiesCluster.Rout: rabiesCluster.R
 
 ######################################################################
 
@@ -111,7 +128,6 @@ polySquare.out: polySquare.pl
 semipar.Rout: semipar.R
 
 ## Bolker recursion
-
 bolkerRecursion.Rout: bolkerRecursion.R
 
 ## Sculpting (MOVED to epiExplore)
@@ -313,6 +329,11 @@ Sources += $(wildcard *.clarpix.tsv)
 ## https://pubmed.ncbi.nlm.nih.gov/36731590/
 Sources += digestive.tsv digestive.md
 digestive.Rout: digestive.R digestive.tsv
+
+######################################################################
+
+Ignore += popMath.pdf
+popMath.pdf: popMath.md
 
 ######################################################################
 
