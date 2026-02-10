@@ -33,6 +33,10 @@ chiIsGamma.Rout: chiIsGamma.R
 
 ######################################################################
 
+temperatureRatios.Rout: temperatureRatios.R
+
+######################################################################
+
 Ignore += idem*
 
 idem.jpg: idem.png
