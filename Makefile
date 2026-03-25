@@ -25,6 +25,9 @@ Ignore += *.out
 
 ######################################################################
 
+## checking for BB
+tost.Rout: tost.R
+
 ## Thinking about frequentist approaches to Bayesian analysis
 intervals.Rout: intervals.R
 
