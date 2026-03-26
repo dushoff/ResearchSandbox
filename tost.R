@@ -30,4 +30,4 @@ testSim <- function(n, slope, sig, bounds, alpha=0.05, seed=20260325){
 }
 
 testSim(n=n, slope=slope, sig=0.2, bounds=bounds)
-testSim(n=n, slope=slope, sig=0.19, bounds=bounds)
+testSim(n=n, slope=slope, sig=0.1955, bounds=bounds)
