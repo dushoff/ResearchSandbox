@@ -25,6 +25,26 @@ Ignore += *.out
 
 ######################################################################
 
+## checking for BB
+## tost.Rout: tost.R tost.md
+
+## Thinking about frequentist approaches to Bayesian analysis
+intervals.Rout: intervals.R
+
+######################################################################
+
+ss.Rout: ss.R
+
+######################################################################
+
+chiIsGamma.Rout: chiIsGamma.R
+
+######################################################################
+
+temperatureRatios.Rout: temperatureRatios.R
+
+######################################################################
+
 Ignore += idem*
 
 idem.jpg: idem.png
