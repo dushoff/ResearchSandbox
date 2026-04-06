@@ -358,7 +358,7 @@ resources:
 ######################################################################
 
 ## Orphan stuff here, related to Ningrui's project maybe?
-Ignore += trains
+alldirs += trains
 
 ## Bicko pages glitch
 
