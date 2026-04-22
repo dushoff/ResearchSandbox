@@ -15,7 +15,7 @@ Ignore = target.mk
 
 # -include makestuff/python.def
 
-vim_session: bash -cl "vmt"
+vim_session: bash -ic "vmt"
 
 ######################################################################
 
