@@ -239,6 +239,9 @@ egf_trim_mre.Rout: egf_trim_mre.R
 
 ######################################################################
 
+## mp_inflow MRE
+accumulate.Rout: accumulate.R
+
 ## macpan2 something
 
 Ignore += quickstart*
