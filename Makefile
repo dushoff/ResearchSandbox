@@ -41,7 +41,13 @@ chiIsGamma.Rout: chiIsGamma.R
 
 ######################################################################
 
+## For a silly bsky post
 temperatureRatios.Rout: temperatureRatios.R
+
+######################################################################
+
+## genome blocks for Ben E. and Sam P.
+genomeBlocks.Rout: genomeBlocks.R
 
 ######################################################################
 
