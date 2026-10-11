@@ -336,6 +336,7 @@ clarStrength.Rout: clarStrength.R
 ## I guess this was something I meant to develop with md talking to pdf...
 clarStrength.md: clarStrength.Rout.pdf
 
+## Moving this NOW to jdStats !! Track Lakens stuff
 ## Make a clarStrength-like picture from a table (allow different language)
 ## Lakens language is still in notebook (not sure what's going on here with venue) 2025 Jun 18 (Wed)
 Sources += $(wildcard *.clarpix.tsv)
